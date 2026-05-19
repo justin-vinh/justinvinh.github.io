@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Researcher · Photographer · Builder</title>
-  <meta name="description" content="Personal portfolio of [Your Name] — research, photography, and personal initiatives." />
+  <title>Justin Vinh — Researcher · Biomedical Engineer · Photographer</title>
+  <meta name="description" content="Personal portfolio of Justin Vinh — immuno-oncology researcher at Dana-Farber Cancer Institute, biomedical engineer, Astronaut Scholar, and photographer." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +20,7 @@
       --surface:      #141414;
       --surface-2:    #1c1c1c;
       --border:       #2a2a2a;
-      --accent:       #c8f04a;      /* electric chartreuse — your signature color */
+      --accent:       #c8f04a;
       --accent-dim:   #8aab27;
       --text:         #e8e4dc;
       --text-mid:     #8a857c;
@@ -52,7 +52,6 @@
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
-      /* Grain texture overlay */
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
@@ -159,7 +158,6 @@
     .nav-links a:hover { color: var(--text); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* Mobile nav toggle */
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -467,7 +465,6 @@
       line-height: 1.75;
     }
 
-    /* Masonry-ish gallery using CSS columns */
     .photo-gallery {
       columns: 3;
       column-gap: 4px;
@@ -514,7 +511,6 @@
 
     .photo-item:hover .photo-caption { opacity: 1; transform: translateY(0); }
 
-    /* Placeholder photo items — replace src with your images */
     .photo-placeholder {
       background: var(--surface-2);
       display: flex;
@@ -807,7 +803,6 @@
       to { opacity: 1; }
     }
 
-    /* Scroll-reveal utility */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -819,7 +814,6 @@
       transform: translateY(0);
     }
 
-    /* Stagger children */
     .reveal-stagger > * {
       opacity: 0;
       transform: translateY(20px);
@@ -844,8 +838,7 @@
   <nav>
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">
-        <!-- TODO: Replace with your initials or short name -->
-        <span>YN</span> / Portfolio
+        <span>JV</span> / Portfolio
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -869,35 +862,32 @@
 
     <div class="container hero-content">
       <p class="hero-eyebrow">
-        <!-- TODO: Update with your current affiliation -->
-        MIT · Department of [Your Field] · Class of 20XX
+        Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs · Boston, MA
       </p>
 
       <h1 class="hero-name">
-        <!-- TODO: Replace with your name -->
-        Your<br /><em>Name</em>
+        Justin<br /><em>Vinh</em>
       </h1>
 
       <div class="hero-roles">
-        <!-- TODO: Update or add/remove role pills as needed -->
         <span class="role-pill">Researcher</span>
+        <span class="role-pill">Biomedical Engineer</span>
+        <span class="role-pill">Astronaut Scholar</span>
         <span class="role-pill">Photographer</span>
-        <span class="role-pill">Engineer</span>
-        <span class="role-pill">Builder</span>
+        <span class="role-pill">Humanitarian</span>
       </div>
 
       <p class="hero-bio">
-        <!-- TODO: Write your one-paragraph bio -->
-        I study [your research area] at [your institution], building systems that [brief description].
-        Outside the lab, I document the world through a lens — and occasionally break things in the
-        name of progress.
+        I study the intersection of immunology, oncology, and artificial intelligence — from focused
+        ultrasound immunotherapy to large language models in clinical care. I graduated from UVA in 2025
+        with a B.S. in Biomedical Engineering (Highest Distinction) and a minor in Data Science, and I'm
+        currently a research assistant at Dana-Farber Cancer Institute.
       </p>
 
       <div class="hero-ctas">
         <a href="#research" class="btn btn-primary">View Research</a>
         <a href="#photography" class="btn btn-ghost">Photography</a>
-        <!-- TODO: Replace # with your actual CV PDF path -->
-        <a href="./cv.pdf" class="btn btn-ghost" target="_blank" rel="noopener">CV ↗</a>
+        <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-ghost" target="_blank" rel="noopener">Resume ↗</a>
       </div>
     </div>
 
@@ -914,74 +904,74 @@
 
       <div class="research-grid reveal-stagger">
 
-        <!-- RESEARCH CARD — duplicate and edit as needed -->
         <article class="research-card">
           <div class="research-card-meta">
-            <span>2024</span>
-            <span class="research-card-tag">Published</span>
+            <span>2025 – Present</span>
+            <span class="research-card-tag">Active</span>
           </div>
           <h3>
-            <!-- TODO: Your paper title -->
-            A Novel Framework for [Topic] Using [Method]
+            Large Language Models for Clinical Free Text Extraction &amp; Serious Illness Care
           </h3>
           <p>
-            <!-- TODO: 1-2 sentence abstract / TL;DR -->
-            We present a system that achieves state-of-the-art results on [benchmark] by leveraging
-            [key insight]. Our approach reduces [metric] by X% while maintaining [quality].
+            At Dana-Farber's Lindvall &amp; Rhee Labs, I leverage fine-tuned LLMs to conduct GWAS
+            studies on treatment side-effect data extracted from clinical notes. I also execute key
+            components of a novel clinical trial evaluating LLMs for summarizing serious illness
+            conversations — enrolling patients, conducting interviews, and running downstream
+            statistical analyses.
           </p>
           <div class="research-card-footer">
-            <!-- TODO: Update tags to reflect your field -->
+            <span class="tag-chip">Clinical AI</span>
+            <span class="tag-chip">NLP</span>
+            <span class="tag-chip">Oncology</span>
+            <span class="tag-chip">GWAS</span>
+          </div>
+        </article>
+
+        <article class="research-card">
+          <div class="research-card-meta">
+            <span>2021 – 2025</span>
+            <span class="research-card-tag">UVA Sheybani Lab</span>
+          </div>
+          <h3>
+            Focused Ultrasound, Dendritic Cells, &amp; Glioblastoma Sonodynamic Therapy
+          </h3>
+          <p>
+            Characterized the effects of 5-ALA sonodynamic therapy on cancerous glioma stem cells
+            and extracellular vesicles to optimize treatment-induced cell death. Developed a novel,
+            cost-accessible in vitro focused ultrasound platform and researched FUS-enhanced dendritic
+            cell activity in oncolytic immunotherapies — presenting findings at national conferences
+            including the BMES Annual Meeting and NIH.
+          </p>
+          <div class="research-card-footer">
+            <span class="tag-chip">Immunoengineering</span>
+            <span class="tag-chip">Focused Ultrasound</span>
+            <span class="tag-chip">Glioblastoma</span>
+            <span class="tag-chip">EVs</span>
+          </div>
+        </article>
+
+        <article class="research-card">
+          <div class="research-card-meta">
+            <span>2023</span>
+            <span class="research-card-tag">NIH / NCI</span>
+          </div>
+          <h3>
+            Multiplex Immunofluorescence &amp; Machine Learning for Tumor Microenvironment Analysis
+          </h3>
+          <p>
+            As a 2023 NIH Summer Intern at the NCI Center for Biomedical Informatics, I developed and
+            optimized a NIDAP cloud workflow to analyze single-cell immunofluorescent imagery. Created
+            new graphing modalities and optimized clustering algorithms to detect immune cell phenotypes
+            — advancing democratization of multiplex single-cell analyses for the broader research
+            community.
+          </p>
+          <div class="research-card-footer">
+            <span class="tag-chip">Data Science</span>
+            <span class="tag-chip">Immunofluorescence</span>
             <span class="tag-chip">Machine Learning</span>
-            <span class="tag-chip">Systems</span>
-            <span class="tag-chip">NeurIPS 2024</span>
+            <span class="tag-chip">NIDAP</span>
           </div>
-          <!-- TODO: Replace # with your paper URL -->
-          <a href="#" class="card-link" target="_blank" rel="noopener">Read paper →</a>
         </article>
-
-        <article class="research-card">
-          <div class="research-card-meta">
-            <span>2023</span>
-            <span class="research-card-tag">In Review</span>
-          </div>
-          <h3>
-            <!-- TODO -->
-            Understanding [Phenomenon] at Scale
-          </h3>
-          <p>
-            <!-- TODO -->
-            An empirical study examining [phenomenon] across [N] datasets, revealing unexpected
-            correlations between [variable A] and [variable B] that challenge existing theory.
-          </p>
-          <div class="research-card-footer">
-            <span class="tag-chip">Data Analysis</span>
-            <span class="tag-chip">Empirical</span>
-          </div>
-          <a href="#" class="card-link" target="_blank" rel="noopener">Preprint →</a>
-        </article>
-
-        <article class="research-card">
-          <div class="research-card-meta">
-            <span>2023</span>
-            <span class="research-card-tag">Workshop</span>
-          </div>
-          <h3>
-            <!-- TODO -->
-            [Short Title]: [Subtitle]
-          </h3>
-          <p>
-            <!-- TODO -->
-            Position paper arguing for [perspective]. Presented at [Workshop Name] at [Conference].
-            Sparked discussion on [topic] within the community.
-          </p>
-          <div class="research-card-footer">
-            <span class="tag-chip">Position Paper</span>
-            <span class="tag-chip">ICML Workshop</span>
-          </div>
-          <a href="#" class="card-link" target="_blank" rel="noopener">Read paper →</a>
-        </article>
-
-        <!-- Add more cards here following the same pattern -->
 
       </div>
     </div>
@@ -1001,73 +991,65 @@
         </div>
         <div>
           <p>
-            <!-- TODO: Write your photography statement -->
-            I shoot [your subjects/genres — street, landscape, portraiture, etc.] with a focus on
-            [your aesthetic — light, geometry, human connection, etc.]. Available for [commission
-            types] — contact me for inquiries.
+            My camera has followed me for over a decade — from forests to churches, from
+            astrophotography under dark skies to portraits and events. I specialize in event,
+            macro, nature, portrait, and astrophotography, and I'm available for commissions.
+            See the full portfolio at <a href="https://justinvinh.com" target="_blank" rel="noopener" style="color:var(--accent);">justinvinh.com</a>.
           </p>
         </div>
       </div>
 
-      <!--
-        PHOTO GALLERY
-        ─────────────
-        Replace each <div class="photo-placeholder"> with:
-
-          <div class="photo-item" data-caption="Your caption">
-            <img src="./photos/your-image.jpg" alt="Description" loading="lazy" />
-            <div class="photo-caption">Your caption</div>
-          </div>
-
-        Tips:
-        - Organize images in a /photos/ folder in your repo
-        - Use loading="lazy" for performance
-        - Vary portrait/landscape ratio for visual interest
-        - Aim for 9-15 images to start
-      -->
       <div class="photo-gallery reveal">
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:280px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9015.JPG" alt="Charleston, 2024" loading="lazy" />
+          <div class="photo-caption">Charleston, 2024</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:380px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Portraits/2024_OChiappetta-6108.jpg" alt="Portraits, 2024" loading="lazy" />
+          <div class="photo-caption">Portraits, 2024</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:220px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/Edit-7659.jpg" alt="Faith of our Fathers" loading="lazy" />
+          <div class="photo-caption">Faith of our Fathers</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:340px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_AY%26Co_Grad-17.jpg" alt="Graduation, 2024" loading="lazy" />
+          <div class="photo-caption">Graduation, 2024</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:260px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Cities/2023_RestonPhotoWalk-4558.JPG" alt="Reston, 2023" loading="lazy" />
+          <div class="photo-caption">Reston, 2023</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:300px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9332.jpg" alt="Professional Headshots, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshots, 2024</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:420px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_DL%26Co_Graduation-36.jpg" alt="Graduation, 2024" loading="lazy" />
+          <div class="photo-caption">Graduation, 2024</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:240px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/DSC_4576.JPG" alt="Religious Events" loading="lazy" />
+          <div class="photo-caption">Religious Events</div>
         </div>
 
-        <div class="photo-item" style="cursor:default;">
-          <div class="photo-placeholder" style="height:360px;">Add photo here</div>
+        <div class="photo-item">
+          <img src="photography_website_albums_20260519/Portraits/2023_RestonPhotoWalk-4476.jpg" alt="Street Portraits, 2023" loading="lazy" />
+          <div class="photo-caption">Street Portraits, 2023</div>
         </div>
 
       </div>
 
       <div style="margin-top:2.5rem; text-align:center;" class="reveal">
-        <!-- TODO: Replace # with your Instagram or portfolio link -->
-        <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">View full portfolio ↗</a>
+        <a href="https://justinvinh.com" class="btn btn-ghost" target="_blank" rel="noopener">View full portfolio ↗</a>
       </div>
     </div>
   </section>
@@ -1084,32 +1066,25 @@
 
       <div class="initiatives-list reveal">
 
-        <!-- INITIATIVE ITEM — duplicate and edit as needed -->
         <a class="initiative-item" href="#" target="_blank" rel="noopener">
           <span class="initiative-num">001</span>
           <div class="initiative-body">
-            <h3>
-              <!-- TODO: Project name -->
-              Project Alpha
-            </h3>
+            <h3>Project Ray</h3>
             <p>
-              <!-- TODO: One-line description -->
-              An open-source tool for [what it does]. Used by [N] researchers / [N] users.
+              Co-founded and lead an organization that partners with pediatric patients to design
+              personalized toys, connecting local makers and makerspaces to 3D print their creations.
             </p>
           </div>
           <span class="initiative-status status-active">Active</span>
         </a>
 
-        <a class="initiative-item" href="#" target="_blank" rel="noopener">
+        <a class="initiative-item" href="https://justinvinh.com" target="_blank" rel="noopener">
           <span class="initiative-num">002</span>
           <div class="initiative-body">
-            <h3>
-              <!-- TODO -->
-              The [Name] Community
-            </h3>
+            <h3>Justin Vinh Photography</h3>
             <p>
-              <!-- TODO -->
-              A community / newsletter / reading group focused on [topic]. Currently [N] members.
+              Freelance photography practice since 2019 — event, macro, nature, portrait, and
+              astrophotography for individuals, organizations, and churches.
             </p>
           </div>
           <span class="initiative-status status-active">Active</span>
@@ -1118,34 +1093,26 @@
         <a class="initiative-item" href="#" target="_blank" rel="noopener">
           <span class="initiative-num">003</span>
           <div class="initiative-body">
-            <h3>
-              <!-- TODO -->
-              [Workshop / Event Name]
-            </h3>
+            <h3>C4 Initiative — Compassionate Connections</h3>
             <p>
-              <!-- TODO -->
-              Organized [event type] at [venue or conference] bringing together [description].
+              Founded a peer mentorship program at UVA pairing first-year and transfer students with
+              upperclassmen to reduce loneliness and social isolation — securing over $3,000 in funding.
             </p>
           </div>
-          <span class="initiative-status status-building">Building</span>
+          <span class="initiative-status status-archive">Concluded 2025</span>
         </a>
 
         <a class="initiative-item" href="#" target="_blank" rel="noopener">
           <span class="initiative-num">004</span>
           <div class="initiative-body">
-            <h3>
-              <!-- TODO -->
-              [Archived Project]
-            </h3>
+            <h3>BME 1501 — Finding &amp; Figuring Cancer</h3>
             <p>
-              <!-- TODO -->
-              [Description]. Concluded in 20XX. [What you learned or what came out of it.]
+              Designed and taught a 1-credit cancer biology course at UVA to make translational
+              oncology research accessible to undergraduates across all majors.
             </p>
           </div>
-          <span class="initiative-status status-archive">Archive</span>
+          <span class="initiative-status status-archive">Spring 2025</span>
         </a>
-
-        <!-- Add more initiative items here -->
 
       </div>
     </div>
@@ -1165,25 +1132,28 @@
           <h2 class="section-title reveal">Who I Am</h2>
           <div class="about-bio reveal">
             <p>
-              <!-- TODO: Paragraph 1 — your background -->
-              I'm a <strong>[title/role]</strong> at <strong>[institution]</strong>, where I work
-              with [advisor/group] on [research focus]. Before this, I studied [degree] at
-              [institution] and spent time at [relevant experience — internship, lab, etc.].
+              I'm an <strong>immuno-oncology researcher</strong> at Dana-Farber Cancer Institute,
+              working in the Lindvall &amp; Rhee Labs under Drs. Charlotta Lindvall and John Rhee.
+              I graduated from the <strong>University of Virginia</strong> in 2025 with a B.S. in
+              Biomedical Engineering (Highest Distinction) and a Minor in Data Science, with a focus
+              on immunoengineering — and a 3.90 GPA.
             </p>
             <p>
-              <!-- TODO: Paragraph 2 — your interests and motivations -->
-              My research sits at the intersection of [field A] and [field B]. I'm broadly interested
-              in [theme] — particularly the question of [central question you care about].
+              My research sits at the intersection of <strong>translational medicine and artificial
+              intelligence</strong>. At Dana-Farber, I leverage LLMs for clinical free text analysis
+              and serious illness care. My prior work at UVA and the National Cancer Institute spanned
+              focused ultrasound immunotherapy, single-cell multiplex imaging, and machine learning
+              approaches to characterizing the tumor microenvironment.
             </p>
             <p>
-              <!-- TODO: Paragraph 3 — personal -->
-              Outside the lab, I shoot film and digital photography, run [initiative], and [other
-              hobbies or interests]. I grew up in [city/country] and currently live in [city].
+              Outside research, I'm a <strong>freelance photographer</strong> of over a decade,
+              co-founder of Project Ray, and a committed humanitarian volunteering at free medical
+              clinics and homeless ministries. I play guitar, chase clear skies for astrophotography,
+              and remain endlessly fascinated by the cells that hunt cells.
             </p>
             <div style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
-              <!-- TODO: Replace # with your actual links -->
-              <a href="./cv.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV</a>
-              <a href="https://scholar.google.com" class="btn btn-ghost" target="_blank" rel="noopener">Google Scholar ↗</a>
+              <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-primary" target="_blank" rel="noopener">Download Resume</a>
+              <a href="https://www.linkedin.com/in/justin-n-vinh" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
             </div>
           </div>
         </div>
@@ -1194,26 +1164,14 @@
             <div class="cv-section-title">Education</div>
             <div class="cv-entries">
               <div>
-                <div class="cv-entry-year">20XX – Present</div>
-                <div class="cv-entry-title">
-                  <!-- TODO -->
-                  Ph.D. in [Field]
-                </div>
-                <div class="cv-entry-sub">
-                  <!-- TODO -->
-                  [University Name]
-                </div>
+                <div class="cv-entry-year">2021 – 2025</div>
+                <div class="cv-entry-title">B.S. Biomedical Engineering, Highest Distinction</div>
+                <div class="cv-entry-sub">University of Virginia · Minor in Data Science · 3.90 GPA</div>
               </div>
               <div>
-                <div class="cv-entry-year">20XX</div>
-                <div class="cv-entry-title">
-                  <!-- TODO -->
-                  B.S. in [Field]
-                </div>
-                <div class="cv-entry-sub">
-                  <!-- TODO -->
-                  [University Name] · [Honors, if any]
-                </div>
+                <div class="cv-entry-year">2018 – 2021</div>
+                <div class="cv-entry-title">Honors Program (Dual-Enrolled)</div>
+                <div class="cv-entry-sub">Northern Virginia Community College · 4.00 GPA</div>
               </div>
             </div>
           </div>
@@ -1222,43 +1180,45 @@
             <div class="cv-section-title">Experience</div>
             <div class="cv-entries">
               <div>
-                <div class="cv-entry-year">Summer 20XX</div>
-                <div class="cv-entry-title">
-                  <!-- TODO -->
-                  Research Intern
-                </div>
-                <div class="cv-entry-sub">
-                  <!-- TODO -->
-                  [Company / Lab]
-                </div>
+                <div class="cv-entry-year">2025 – Present</div>
+                <div class="cv-entry-title">Research Assistant</div>
+                <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs</div>
               </div>
               <div>
-                <div class="cv-entry-year">20XX – 20XX</div>
-                <div class="cv-entry-title">
-                  <!-- TODO -->
-                  [Role]
-                </div>
-                <div class="cv-entry-sub">
-                  <!-- TODO -->
-                  [Organization]
-                </div>
+                <div class="cv-entry-year">Summer 2023</div>
+                <div class="cv-entry-title">Undergraduate Research Fellow</div>
+                <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2021 – 2025</div>
+                <div class="cv-entry-title">Research Assistant</div>
+                <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering</div>
               </div>
             </div>
           </div>
 
           <div>
-            <div class="cv-section-title">Awards &amp; Grants</div>
+            <div class="cv-section-title">Awards &amp; Honors</div>
             <div class="cv-entries">
               <div>
-                <div class="cv-entry-year">20XX</div>
-                <div class="cv-entry-title">
-                  <!-- TODO -->
-                  [Fellowship / Award Name]
-                </div>
-                <div class="cv-entry-sub">
-                  <!-- TODO -->
-                  [Awarding body]
-                </div>
+                <div class="cv-entry-year">2025</div>
+                <div class="cv-entry-title">UVA Engineering Outstanding Student of the Year</div>
+                <div class="cv-entry-sub">University of Virginia</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2024</div>
+                <div class="cv-entry-title">Astronaut Scholarship</div>
+                <div class="cv-entry-sub">Astronaut Scholarship Foundation</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2024</div>
+                <div class="cv-entry-title">Churchill Scholarship Nomination</div>
+                <div class="cv-entry-sub">University of Virginia</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2023</div>
+                <div class="cv-entry-title">Barry Goldwater Scholarship Nomination</div>
+                <div class="cv-entry-sub">University of Virginia</div>
               </div>
             </div>
           </div>
@@ -1279,36 +1239,22 @@
         <div class="reveal">
           <h2 class="contact-heading">Let's<br /><em>connect.</em></h2>
           <p class="contact-note">
-            <!-- TODO: Update with your contact preferences -->
             Open to research collaborations, photography commissions, speaking invitations, and
             interesting conversations. I try to respond within a week.
           </p>
         </div>
 
         <div class="contact-links reveal">
-          <!-- TODO: Replace all hrefs with your actual links -->
-          <a class="contact-link-item" href="mailto:you@example.com">
+          <a class="contact-link-item" href="mailto:jvinh21@gmail.com">
             Email
             <span class="arrow">↗</span>
           </a>
-          <a class="contact-link-item" href="https://github.com/yourusername" target="_blank" rel="noopener">
-            GitHub
-            <span class="arrow">↗</span>
-          </a>
-          <a class="contact-link-item" href="https://twitter.com/yourusername" target="_blank" rel="noopener">
-            Twitter / X
-            <span class="arrow">↗</span>
-          </a>
-          <a class="contact-link-item" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
+          <a class="contact-link-item" href="https://www.linkedin.com/in/justin-n-vinh" target="_blank" rel="noopener">
             LinkedIn
             <span class="arrow">↗</span>
           </a>
-          <a class="contact-link-item" href="https://scholar.google.com" target="_blank" rel="noopener">
-            Google Scholar
-            <span class="arrow">↗</span>
-          </a>
-          <a class="contact-link-item" href="https://instagram.com/yourusername" target="_blank" rel="noopener">
-            Instagram
+          <a class="contact-link-item" href="https://justinvinh.com" target="_blank" rel="noopener">
+            Photography Portfolio
             <span class="arrow">↗</span>
           </a>
         </div>
@@ -1322,11 +1268,9 @@
   <footer>
     <div class="container footer-inner">
       <p class="footer-text">
-        <!-- TODO: Replace name and year -->
-        © 2025 Your Name. All rights reserved.
+        © 2026 Justin Vinh. All rights reserved.
       </p>
       <p class="footer-text">
-        <!-- Feel free to remove or keep this credit -->
         Hand-coded HTML · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
       </p>
     </div>
@@ -1355,7 +1299,6 @@
       toggle.setAttribute('aria-expanded', open);
     });
 
-    // Close nav on link click (mobile)
     navLinks.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => navLinks.classList.remove('open'));
     });
@@ -1379,7 +1322,6 @@
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
 
-    // Attach click to all .photo-item elements that contain a real <img>
     document.querySelectorAll('.photo-item img').forEach(img => {
       img.parentElement.style.cursor = 'zoom-in';
       img.parentElement.addEventListener('click', () => {
