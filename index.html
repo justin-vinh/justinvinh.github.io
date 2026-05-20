@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg" />
   <title>Justin Vinh — Researcher · Biomedical Engineer · Photographer</title>
   <meta name="description" content="Personal portfolio of Justin Vinh — immuno-oncology researcher at Dana-Farber Cancer Institute, biomedical engineer, Astronaut Scholar, and photographer." />
 
@@ -2949,6 +2950,31 @@
     }
 
     setTimeout(typeTick, 900);
+
+    /* ── Canvas favicon — matches site font exactly ── */
+    document.fonts.ready.then(() => {
+      const c = document.createElement('canvas');
+      c.width = c.height = 64;
+      const ctx = c.getContext('2d');
+
+      // Dark rounded background
+      ctx.fillStyle = '#0d0d0d';
+      ctx.beginPath();
+      ctx.roundRect(0, 0, 64, 64, 8);
+      ctx.fill();
+
+      // Amber "JV" in IBM Plex Mono
+      ctx.fillStyle = '#f5a623';
+      ctx.font = '500 26px "IBM Plex Mono", monospace';
+      ctx.letterSpacing = '2px';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('JV', 33, 33);
+
+      const link = document.getElementById('favicon');
+      link.type = 'image/png';
+      link.href = c.toDataURL();
+    });
 
     /* ── Theme toggle ── */
     const themeToggle = document.getElementById('themeToggle');
