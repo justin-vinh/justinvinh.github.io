@@ -207,6 +207,8 @@
 
     @media (max-width: 600px) {
       #hero { padding-top: calc(var(--nav-h) + 5.5rem); padding-bottom: 3rem; }
+      .hero-ctas { animation: none; transition: opacity 0.65s ease, transform 0.65s ease; }
+      .hero-ctas.visible { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 900px) {
@@ -2811,7 +2813,7 @@
     'use strict';
 
     /* ── Typewriter ── */
-    const typeWords = ['Researcher.', 'Biomedical Engineer.', 'Astronaut Scholar.', 'Photographer.', 'Humanitarian.'];
+    const typeWords = ['Researcher.', 'Biomedical Engineer.', 'Data Scientist.', 'Astronaut Scholar.', 'Photographer.', 'Humanitarian.'];
     let typeWordIdx = 0, typeCharIdx = 0, typeDeleting = false;
     const typeEl = document.getElementById('typed');
 
@@ -2865,6 +2867,11 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
+
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      const heroCtas = document.querySelector('.hero-ctas');
+      if (heroCtas) observer.observe(heroCtas);
+    }
 
     /* ── Lightbox ── */
     const lightbox    = document.getElementById('lightbox');
