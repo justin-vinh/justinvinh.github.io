@@ -37,8 +37,8 @@
       --accent:       #c8f04a;
       --accent-dim:   #8aab27;
       --text:         #e8e4dc;
-      --text-mid:     #b8b3aa;
-      --text-faint:   #6e6860;
+      --text-mid:     #c4c0b8;
+      --text-faint:   #807c78;
 
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
@@ -457,7 +457,7 @@
     }
 
     .research-card p {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--text-mid);
       line-height: 1.65;
       flex: 1;
@@ -575,7 +575,7 @@
     }
 
     .pub-title {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 400;
       color: var(--text);
       line-height: 1.4;
@@ -583,7 +583,7 @@
 
     .pub-detail {
       font-family: var(--font-mono);
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       letter-spacing: 0.04em;
       color: var(--text-faint);
       line-height: 1.6;
@@ -670,7 +670,7 @@
     }
 
     .news-title {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text);
       line-height: 1.4;
     }
@@ -894,7 +894,7 @@
 
 
     .initiative-body p {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--text-mid);
       line-height: 1.6;
     }
@@ -1075,7 +1075,7 @@
     }
 
     .about-bio {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--text-mid);
       line-height: 1.8;
       display: flex;
@@ -1102,21 +1102,21 @@
 
     .cv-entry-year {
       font-family: var(--font-mono);
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       color: var(--accent-dim);
       letter-spacing: 0.06em;
       margin-bottom: 0.05rem;
     }
 
     .cv-entry-title {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: var(--text);
       margin-bottom: 0.05rem;
       line-height: 1.3;
     }
 
     .cv-entry-sub {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: var(--text-faint);
       line-height: 1.3;
     }
@@ -1150,7 +1150,7 @@
     .contact-heading em { color: var(--text-mid); font-style: italic; }
 
     .contact-note {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-mid);
       line-height: 1.7;
     }
@@ -1388,6 +1388,97 @@
     .reveal-stagger.visible > *:nth-child(n+7) { opacity: 1; transform: none; transition-delay: 0.70s; }
 
 
+    /* ── Hero status strip ── */
+    .hero-status {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 0;
+      margin-bottom: 1.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-mid);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s 0.3s ease forwards;
+    }
+
+    .hero-status-item { white-space: nowrap; }
+
+    .hero-status-sep {
+      color: var(--accent);
+      margin: 0 0.75rem;
+    }
+
+    /* ── Photo filter ── */
+    .photo-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+
+    .photo-filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text-faint);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .photo-filter-btn:hover { color: var(--text-mid); border-color: #444; }
+
+    .photo-filter-btn.active {
+      color: var(--accent);
+      border-color: rgba(200,240,74,0.4);
+      background: rgba(200,240,74,0.06);
+    }
+
+    .photo-item.hidden { display: none; }
+
+    /* ── Skills toolkit ── */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) { .skill-grid { grid-template-columns: 1fr; } }
+
+    .skill-category-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-chip {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-mid);
+      background: var(--surface);
+    }
+
     /* ── Scroll progress bar ── */
     #scroll-progress {
       position: fixed;
@@ -1441,6 +1532,14 @@
         Justin<br /><em>Vinh</em>
       </h1>
 
+      <div class="hero-status">
+        <span class="hero-status-item">Dana-Farber Cancer Institute</span>
+        <span class="hero-status-sep">·</span>
+        <span class="hero-status-item">LLMs in Oncology &amp; Serious Illness Care</span>
+        <span class="hero-status-sep">·</span>
+        <span class="hero-status-item">Open to: Research &amp; Photography</span>
+      </div>
+
       <div class="hero-typed">
         <span id="typed"></span><span id="typed-cursor"></span>
       </div>
@@ -1456,6 +1555,7 @@
         <a href="#research" class="btn btn-primary">View Research</a>
         <a href="#photography" class="btn btn-ghost">Photography</a>
         <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-ghost" target="_blank" rel="noopener">Resume ↗</a>
+        <a href="LinkedInProfile.pdf" class="btn btn-ghost" target="_blank" rel="noopener">CV (PDF) ↗</a>
       </div>
     </div>
 
@@ -1710,57 +1810,65 @@
         </div>
       </div>
 
+      <div class="photo-filter reveal">
+        <button class="photo-filter-btn active" data-filter="all">All</button>
+        <button class="photo-filter-btn" data-filter="portraits">Portraits</button>
+        <button class="photo-filter-btn" data-filter="events">Events</button>
+        <button class="photo-filter-btn" data-filter="cities">Cities</button>
+      </div>
+
       <div class="photo-gallery reveal-stagger">
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="cities">
           <img src="photography_website_albums_20260519/Cities/2024_Charleston-9015.JPG" alt="Charleston, 2024" loading="lazy" />
           <div class="photo-caption">Charleston, 2024</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="portraits">
           <img src="photography_website_albums_20260519/Portraits/2024_OChiappetta-6108.jpg" alt="Portraits, 2024" loading="lazy" />
           <div class="photo-caption">Portraits, 2024</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="events">
           <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/Edit-7659.jpg" alt="Faith of our Fathers" loading="lazy" />
           <div class="photo-caption">Faith of our Fathers</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="events">
           <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_AY%26Co_Grad-17.jpg" alt="Graduation, 2024" loading="lazy" />
           <div class="photo-caption">Graduation, 2024</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="cities">
           <img src="photography_website_albums_20260519/Cities/2023_RestonPhotoWalk-4558.JPG" alt="Reston, 2023" loading="lazy" />
           <div class="photo-caption">Reston, 2023</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="portraits">
           <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9332.jpg" alt="Professional Headshots, 2024" loading="lazy" />
           <div class="photo-caption">Professional Headshots, 2024</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="events">
           <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_DL%26Co_Graduation-36.jpg" alt="Graduation, 2024" loading="lazy" />
           <div class="photo-caption">Graduation, 2024</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="events">
           <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/DSC_4576.JPG" alt="Religious Events" loading="lazy" />
           <div class="photo-caption">Religious Events</div>
         </div>
 
-        <div class="photo-item">
+        <div class="photo-item" data-category="portraits">
           <img src="photography_website_albums_20260519/Portraits/2023_RestonPhotoWalk-4476.jpg" alt="Street Portraits, 2023" loading="lazy" />
           <div class="photo-caption">Street Portraits, 2023</div>
         </div>
 
       </div>
 
-      <div style="margin-top:2.5rem; text-align:center;" class="reveal">
+      <div style="margin-top:2.5rem; text-align:center; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="reveal">
         <a href="https://justinvinh.com" class="btn btn-ghost" target="_blank" rel="noopener">View full portfolio ↗</a>
+        <a href="mailto:jack246813@gmail.com?subject=Photography%20Inquiry" class="btn btn-primary">Book a session →</a>
       </div>
     </div>
   </section>
@@ -1799,9 +1907,8 @@
             <div class="initiative-body">
               <h3>The C4 Initiative</h3>
               <p>
-                College Companions &amp; Compassionate Connections (C4) — a peer mentorship program I founded
-                at UVA pairing first-year and transfer students with upperclassmen to reduce loneliness
-                and social isolation, securing over $3,000 in funding.
+                Founded a peer mentorship program at UVA pairing first-year and transfer students with
+                upperclassmen to reduce loneliness and social isolation, securing over $3,000 in funding.
               </p>
             </div>
           </div>
@@ -2074,6 +2181,40 @@
                 <div class="cv-entry-title">Catholic Hoos Homeless Ministry</div>
                 <div class="cv-entry-sub">Volunteer · Charlottesville, VA</div>
               </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills & Toolkit -->
+      <div class="about-coursework reveal">
+        <div class="cv-section-title">Skills &amp; Toolkit</div>
+        <div class="skill-grid">
+
+          <div>
+            <div class="skill-category-label">Computational</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">R</span>
+              <span class="skill-chip">MATLAB</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">Databricks</span>
+              <span class="skill-chip">C++</span>
+              <span class="skill-chip">UNIX</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="skill-category-label">Laboratory</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Cell culture</span>
+              <span class="skill-chip">IF microscopy</span>
+              <span class="skill-chip">EV isolation</span>
+              <span class="skill-chip">PCR</span>
+              <span class="skill-chip">Western blots</span>
+              <span class="skill-chip">BCA assays</span>
+              <span class="skill-chip">Focused ultrasound</span>
             </div>
           </div>
 
@@ -2473,6 +2614,18 @@
     }, { threshold: 0.4 });
 
     sections.forEach(s => sectionObserver.observe(s));
+
+    /* ── Photo gallery filter ── */
+    document.querySelectorAll('.photo-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.photo-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.photo-item').forEach(item => {
+          item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
+        });
+      });
+    });
   </script>
 
 </body>
