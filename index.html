@@ -1479,6 +1479,66 @@
       background: var(--surface);
     }
 
+    /* ── Skills bar ── */
+    .skills-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+
+    .skills-bar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 3rem;
+      align-items: flex-start;
+    }
+
+    .skills-bar-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .skills-bar-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .skills-bar-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+    .skills-bar-chip {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-mid);
+    }
+
+    /* ── Photo show-more ── */
+    .photo-show-more {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .photo-show-more-btn {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text-faint);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .photo-show-more-btn:hover { color: var(--text-mid); border-color: #444; }
+
     /* ── Scroll progress bar ── */
     #scroll-progress {
       position: fixed;
@@ -1532,14 +1592,6 @@
         Justin<br /><em>Vinh</em>
       </h1>
 
-      <div class="hero-status">
-        <span class="hero-status-item">Dana-Farber Cancer Institute</span>
-        <span class="hero-status-sep">·</span>
-        <span class="hero-status-item">LLMs in Oncology &amp; Serious Illness Care</span>
-        <span class="hero-status-sep">·</span>
-        <span class="hero-status-item">Open to: Research &amp; Photography</span>
-      </div>
-
       <div class="hero-typed">
         <span id="typed"></span><span id="typed-cursor"></span>
       </div>
@@ -1552,15 +1604,58 @@
       </p>
 
       <div class="hero-ctas">
-        <a href="#research" class="btn btn-primary">View Research</a>
-        <a href="#photography" class="btn btn-ghost">Photography</a>
+        <a href="#research" class="btn btn-primary">Research</a>
+        <a href="#photography" class="btn btn-primary">Photography</a>
         <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-ghost" target="_blank" rel="noopener">Resume ↗</a>
-        <a href="LinkedInProfile.pdf" class="btn btn-ghost" target="_blank" rel="noopener">CV (PDF) ↗</a>
       </div>
     </div>
 
     <div class="hero-scroll-hint">Scroll</div>
   </section>
+
+  <!-- ============================================================
+       SKILLS BAR
+       ============================================================ -->
+  <div class="skills-bar">
+    <div class="container">
+      <div class="skills-bar-inner">
+        <div class="skills-bar-group">
+          <div class="skills-bar-label">Computational</div>
+          <div class="skills-bar-chips">
+            <span class="skills-bar-chip">Python</span>
+            <span class="skills-bar-chip">R</span>
+            <span class="skills-bar-chip">MATLAB</span>
+            <span class="skills-bar-chip">SQL</span>
+            <span class="skills-bar-chip">Databricks</span>
+            <span class="skills-bar-chip">C++</span>
+            <span class="skills-bar-chip">UNIX</span>
+          </div>
+        </div>
+        <div class="skills-bar-group">
+          <div class="skills-bar-label">Laboratory</div>
+          <div class="skills-bar-chips">
+            <span class="skills-bar-chip">Cell culture</span>
+            <span class="skills-bar-chip">IF microscopy</span>
+            <span class="skills-bar-chip">EV isolation</span>
+            <span class="skills-bar-chip">PCR</span>
+            <span class="skills-bar-chip">Western blots</span>
+            <span class="skills-bar-chip">BCA assays</span>
+            <span class="skills-bar-chip">Focused ultrasound</span>
+          </div>
+        </div>
+        <div class="skills-bar-group">
+          <div class="skills-bar-label">Photography</div>
+          <div class="skills-bar-chips">
+            <span class="skills-bar-chip">Portraits</span>
+            <span class="skills-bar-chip">Events</span>
+            <span class="skills-bar-chip">Professional headshots</span>
+            <span class="skills-bar-chip">Adobe Lightroom</span>
+            <span class="skills-bar-chip">Capture One</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================================
        RESEARCH
@@ -1813,62 +1908,164 @@
       <div class="photo-filter reveal">
         <button class="photo-filter-btn active" data-filter="all">All</button>
         <button class="photo-filter-btn" data-filter="portraits">Portraits</button>
+        <button class="photo-filter-btn" data-filter="headshots">Headshots</button>
         <button class="photo-filter-btn" data-filter="events">Events</button>
         <button class="photo-filter-btn" data-filter="cities">Cities</button>
       </div>
 
-      <div class="photo-gallery reveal-stagger">
+      <div class="photo-gallery reveal-stagger" id="photoGallery">
 
-        <div class="photo-item" data-category="cities">
-          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9015.JPG" alt="Charleston, 2024" loading="lazy" />
-          <div class="photo-caption">Charleston, 2024</div>
-        </div>
-
-        <div class="photo-item" data-category="portraits">
+        <!-- Featured 10 (shown in All view by default) -->
+        <div class="photo-item photo-featured" data-category="portraits">
           <img src="photography_website_albums_20260519/Portraits/2024_OChiappetta-6108.jpg" alt="Portraits, 2024" loading="lazy" />
           <div class="photo-caption">Portraits, 2024</div>
         </div>
 
-        <div class="photo-item" data-category="events">
+        <div class="photo-item photo-featured" data-category="cities">
+          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9015.JPG" alt="Charleston, 2024" loading="lazy" />
+          <div class="photo-caption">Charleston, 2024</div>
+        </div>
+
+        <div class="photo-item photo-featured" data-category="events">
           <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/Edit-7659.jpg" alt="Faith of our Fathers" loading="lazy" />
           <div class="photo-caption">Faith of our Fathers</div>
         </div>
 
-        <div class="photo-item" data-category="events">
+        <div class="photo-item photo-featured" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9525.jpg" alt="Professional Headshot, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshot, 2024</div>
+        </div>
+
+        <div class="photo-item photo-featured" data-category="events">
           <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_AY%26Co_Grad-17.jpg" alt="Graduation, 2024" loading="lazy" />
           <div class="photo-caption">Graduation, 2024</div>
         </div>
 
-        <div class="photo-item" data-category="cities">
+        <div class="photo-item photo-featured" data-category="cities">
           <img src="photography_website_albums_20260519/Cities/2023_RestonPhotoWalk-4558.JPG" alt="Reston, 2023" loading="lazy" />
           <div class="photo-caption">Reston, 2023</div>
         </div>
 
-        <div class="photo-item" data-category="portraits">
-          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9332.jpg" alt="Professional Headshots, 2024" loading="lazy" />
-          <div class="photo-caption">Professional Headshots, 2024</div>
-        </div>
-
-        <div class="photo-item" data-category="events">
-          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_DL%26Co_Graduation-36.jpg" alt="Graduation, 2024" loading="lazy" />
-          <div class="photo-caption">Graduation, 2024</div>
-        </div>
-
-        <div class="photo-item" data-category="events">
-          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/DSC_4576.JPG" alt="Religious Events" loading="lazy" />
-          <div class="photo-caption">Religious Events</div>
-        </div>
-
-        <div class="photo-item" data-category="portraits">
+        <div class="photo-item photo-featured" data-category="portraits">
           <img src="photography_website_albums_20260519/Portraits/2023_RestonPhotoWalk-4476.jpg" alt="Street Portraits, 2023" loading="lazy" />
           <div class="photo-caption">Street Portraits, 2023</div>
         </div>
 
+        <div class="photo-item photo-featured" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_OChiappetta-6103.jpg" alt="Professional Headshot, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshot, 2024</div>
+        </div>
+
+        <div class="photo-item photo-featured" data-category="events">
+          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_DL%26Co_Graduation-36.jpg" alt="Graduation, 2024" loading="lazy" />
+          <div class="photo-caption">Graduation, 2024</div>
+        </div>
+
+        <div class="photo-item photo-featured" data-category="cities">
+          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9081.JPG" alt="Charleston, 2024" loading="lazy" />
+          <div class="photo-caption">Charleston, 2024</div>
+        </div>
+
+        <!-- Additional photos (hidden in All view until "Show more") -->
+        <div class="photo-item photo-extra" data-category="portraits">
+          <img src="photography_website_albums_20260519/Portraits/2024_OChiappetta-6183.jpg" alt="Portraits, 2024" loading="lazy" />
+          <div class="photo-caption">Portraits, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="portraits">
+          <img src="photography_website_albums_20260519/Portraits/2024_OChiappetta-6144.jpg" alt="Portraits, 2024" loading="lazy" />
+          <div class="photo-caption">Portraits, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="portraits">
+          <img src="photography_website_albums_20260519/Portraits/2023_RestonPhotoWalk-4488.JPG" alt="Street Portraits, 2023" loading="lazy" />
+          <div class="photo-caption">Street Portraits, 2023</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="portraits">
+          <img src="photography_website_albums_20260519/Portraits/2024_HOCH_CH%26HS-9556.JPG" alt="Portraits, 2024" loading="lazy" />
+          <div class="photo-caption">Portraits, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="portraits">
+          <img src="photography_website_albums_20260519/Portraits/2024_SpringUVA-9289.JPG" alt="Spring at UVA, 2024" loading="lazy" />
+          <div class="photo-caption">Spring at UVA, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9332.jpg" alt="Professional Headshot, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshot, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9341.jpg" alt="Professional Headshot, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshot, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2024_StudCo_Headshot-9451.jpg" alt="Professional Headshot, 2024" loading="lazy" />
+          <div class="photo-caption">Professional Headshot, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2023_CathHoosHeadshots-7312.jpg" alt="Catholic Hoos Headshots, 2023" loading="lazy" />
+          <div class="photo-caption">Catholic Hoos Headshots, 2023</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="headshots">
+          <img src="photography_website_albums_20260519/Professional%20Headshots/2023_CathHoosHeadshots-7375.jpg" alt="Catholic Hoos Headshots, 2023" loading="lazy" />
+          <div class="photo-caption">Catholic Hoos Headshots, 2023</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="events">
+          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/DSC_4576.JPG" alt="Faith of our Fathers" loading="lazy" />
+          <div class="photo-caption">Faith of our Fathers</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="events">
+          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/Edit-9026.jpg" alt="Faith of our Fathers" loading="lazy" />
+          <div class="photo-caption">Faith of our Fathers</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="events">
+          <img src="photography_website_albums_20260519/Faith%20of%20our%20Fathers/2023_FallFireside--10.jpg" alt="Fall Fireside, 2023" loading="lazy" />
+          <div class="photo-caption">Fall Fireside, 2023</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="events">
+          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_AY%26Co_Grad-24.jpg" alt="Graduation, 2024" loading="lazy" />
+          <div class="photo-caption">Graduation, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="events">
+          <img src="photography_website_albums_20260519/Graduation%20-%20I%20have%20worn%20the%20honor%20of%20honors/2024_EG_Grad-7.jpg" alt="Graduation, 2024" loading="lazy" />
+          <div class="photo-caption">Graduation, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="cities">
+          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9034.JPG" alt="Charleston, 2024" loading="lazy" />
+          <div class="photo-caption">Charleston, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="cities">
+          <img src="photography_website_albums_20260519/Cities/2024_Charleston-9098.JPG" alt="Charleston, 2024" loading="lazy" />
+          <div class="photo-caption">Charleston, 2024</div>
+        </div>
+
+        <div class="photo-item photo-extra" data-category="cities">
+          <img src="photography_website_albums_20260519/Cities/2023_RestonPhotoWalk-4550.JPG" alt="Reston, 2023" loading="lazy" />
+          <div class="photo-caption">Reston, 2023</div>
+        </div>
+
       </div>
 
-      <div style="margin-top:2.5rem; text-align:center; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="reveal">
+      <div class="photo-show-more" id="photoShowMore">
+        <button class="photo-show-more-btn" id="photoShowMoreBtn">Show more ↓</button>
+      </div>
+
+      <div style="margin-top:2rem; text-align:center; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="reveal">
         <a href="https://justinvinh.com" class="btn btn-ghost" target="_blank" rel="noopener">View full portfolio ↗</a>
-        <a href="mailto:jack246813@gmail.com?subject=Photography%20Inquiry" class="btn btn-primary">Book a session →</a>
+        <a href="mailto:jack246813@gmail.com?subject=Photography%20Inquiry" class="btn btn-ghost">Book a session →</a>
       </div>
     </div>
   </section>
@@ -2615,17 +2812,40 @@
 
     sections.forEach(s => sectionObserver.observe(s));
 
-    /* ── Photo gallery filter ── */
+    /* ── Photo gallery filter + show-more ── */
+    let showingAll = false;
+    const showMoreBtn = document.getElementById('photoShowMoreBtn');
+    const showMoreWrap = document.getElementById('photoShowMore');
+
+    function applyFilter(filter) {
+      document.querySelectorAll('.photo-item').forEach(item => {
+        const matchesCategory = filter === 'all' || item.dataset.category === filter;
+        const isExtra = item.classList.contains('photo-extra');
+        if (!matchesCategory) {
+          item.classList.add('hidden');
+        } else if (filter === 'all' && isExtra && !showingAll) {
+          item.classList.add('hidden');
+        } else {
+          item.classList.remove('hidden');
+        }
+      });
+      showMoreWrap.style.display = filter === 'all' && !showingAll ? 'flex' : 'none';
+    }
+
     document.querySelectorAll('.photo-filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
         document.querySelectorAll('.photo-filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        document.querySelectorAll('.photo-item').forEach(item => {
-          item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
-        });
+        applyFilter(btn.dataset.filter);
       });
     });
+
+    showMoreBtn.addEventListener('click', () => {
+      showingAll = true;
+      applyFilter('all');
+    });
+
+    applyFilter('all');
   </script>
 
 </body>
