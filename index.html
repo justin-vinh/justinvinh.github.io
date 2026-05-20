@@ -20,6 +20,9 @@
   <meta name="twitter:description" content="Personal portfolio of Justin Vinh — immuno-oncology researcher at Dana-Farber Cancer Institute, biomedical engineer, Astronaut Scholar, and photographer." />
   <meta name="twitter:image" content="https://justinvinh.github.io/photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" />
 
+  <!-- Preload above-fold image -->
+  <link rel="preload" as="image" href="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,10 +55,10 @@
     }
 
     [data-theme="light"] {
-      --bg:           #f4f0e8;
-      --surface:      #e8e4dc;
-      --surface-2:    #dedad1;
-      --border:       #c8c3bb;
+      --bg:           #F4F3F2;
+      --surface:      #ECEAE8;
+      --surface-2:    #E3E0DC;
+      --border:       #C8C4BC;
       --accent:       #5a8c14;
       --accent-dim:   #3d6209;
       --text:         #1c1814;
@@ -63,10 +66,49 @@
       --text-faint:   #6a6660;
     }
 
-    [data-theme="light"] nav { background: rgba(244,240,232,0.88); }
+    [data-theme="light"] nav { background: rgba(244,243,242,0.9); }
     [data-theme="light"] .btn-primary { color: #fff; }
     [data-theme="light"] .btn-primary:hover { background: #72b01a; }
     html[data-theme="light"] ::selection { color: #fff; }
+
+    /* light mode: swap hardcoded lime rgba → dark-green rgba */
+    [data-theme="light"] .pub-type-journal {
+      background: rgba(90,140,20,0.1);
+      color: var(--accent-dim);
+      border-color: rgba(90,140,20,0.3);
+    }
+    [data-theme="light"] .status-active {
+      background: rgba(90,140,20,0.1);
+      color: var(--accent);
+      border-color: rgba(90,140,20,0.35);
+    }
+    [data-theme="light"] .research-card-provenance {
+      border-left-color: rgba(90,140,20,0.35);
+    }
+    [data-theme="light"] .pub-link {
+      border-color: rgba(90,140,20,0.4);
+      background: rgba(90,140,20,0.07);
+    }
+    [data-theme="light"] .pub-link:hover {
+      background: rgba(90,140,20,0.14);
+      border-color: rgba(90,140,20,0.65);
+    }
+    [data-theme="light"] .initiative-link {
+      border-color: rgba(90,140,20,0.4);
+      background: rgba(90,140,20,0.07);
+    }
+    [data-theme="light"] .initiative-item.has-link:hover .initiative-link {
+      background: rgba(90,140,20,0.14);
+      border-color: rgba(90,140,20,0.65);
+    }
+    [data-theme="light"] .photo-filter-btn.active {
+      border-color: rgba(90,140,20,0.45);
+      background: rgba(90,140,20,0.08);
+    }
+    [data-theme="light"] [data-fs-success]:not(:empty) {
+      border-color: rgba(90,140,20,0.35);
+      background: rgba(90,140,20,0.07);
+    }
 
     /* ============================================================
        RESET & BASE
@@ -1794,7 +1836,7 @@
       <div class="about-grid">
 
         <div class="about-photo-wrap reveal">
-          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" />
+          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" fetchpriority="high" decoding="async" />
           <span class="about-photo-label">Justin Vinh</span>
         </div>
 
@@ -3120,6 +3162,26 @@
         bookingStatus.textContent = 'Network error — try the contact form below.';
       }
     });
+
+    /* ── Background prefetch gallery images ── */
+    function prefetchGallery() {
+      const imgs = Array.from(document.querySelectorAll('.photo-item img'));
+      imgs.forEach((img, i) => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        setTimeout(() => {
+          const pre = new Image();
+          pre.decoding = 'async';
+          pre.src = src;
+        }, i * 80);
+      });
+    }
+
+    if ('requestIdleCallback' in window) {
+      window.addEventListener('load', () => requestIdleCallback(prefetchGallery, { timeout: 3000 }));
+    } else {
+      window.addEventListener('load', () => setTimeout(prefetchGallery, 1500));
+    }
   </script>
 
 </body>
