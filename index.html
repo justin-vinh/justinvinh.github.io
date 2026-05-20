@@ -1345,10 +1345,23 @@
     .reveal-stagger.visible > *:nth-child(n+7) { opacity: 1; transform: none; transition-delay: 0.70s; }
 
 
+    /* ── Scroll progress bar ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      z-index: 200;
+      pointer-events: none;
+    }
+
   </style>
 </head>
 
 <body>
+
+  <div id="scroll-progress"></div>
 
   <!-- ============================================================
        NAVIGATION
@@ -2315,6 +2328,47 @@
     lightbox.addEventListener('click', closeLightbox);
     lightboxClose.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    /* ── Scroll progress bar ── */
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* ── Text scramble on section labels ── */
+    const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·/—';
+
+    function scramble(el) {
+      const target = el.dataset.scramble;
+      let frame = 0;
+      const totalFrames = 20;
+      const id = setInterval(() => {
+        el.textContent = target.split('').map((ch, i) => {
+          if (ch === ' ') return ' ';
+          if (frame / totalFrames > i / target.length) return ch;
+          return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        }).join('');
+        if (++frame > totalFrames) {
+          el.textContent = target;
+          clearInterval(id);
+        }
+      }, 35);
+    }
+
+    const scrambleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          scramble(entry.target);
+          scrambleObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.8 });
+
+    document.querySelectorAll('.section-label').forEach(el => {
+      el.dataset.scramble = el.textContent.trim().toUpperCase();
+      scrambleObserver.observe(el);
+    });
 
     /* ── Active nav link on scroll ── */
     const sections = document.querySelectorAll('section[id]');
