@@ -221,6 +221,14 @@
       display: flex;
       gap: 2rem;
       align-items: center;
+      /* desktop: sit inside the nav bar */
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: var(--nav-h);
+      z-index: 100;
+      list-style: none;
     }
 
     .nav-links a {
@@ -285,9 +293,8 @@
       transition: transform 0.3s ease, opacity 0.2s ease;
     }
 
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(3px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
 
     @media (max-width: 600px) {
       #hero { padding-top: calc(var(--nav-h) + 5.5rem); padding-bottom: 3rem; }
@@ -298,27 +305,44 @@
     @media (max-width: 900px) {
       .nav-toggle { display: flex; }
       .nav-links {
+        /* now a viewport sibling — fixed works freely */
         position: fixed;
-        top: var(--nav-h); left: 0; right: 0;
+        top: var(--nav-h); left: 0; right: 0; bottom: 0;
+        height: auto;
+        transform: translateY(-8px);
         background: var(--surface);
-        border-bottom: 1px solid var(--border);
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
         gap: 0;
-        padding-block: 1rem;
+        padding: 1rem 0 2rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s 0.22s;
+        z-index: 99;
       }
       .nav-links.open {
         visibility: visible;
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0s;
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s 0s;
       }
-      .nav-links a { padding: 1.1rem 2rem; width: 100%; font-size: 0.9rem; letter-spacing: 0.14em; }
+      .nav-links li { display: block; }
+      .nav-links a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.15rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--text-mid);
+        transition: color 0.15s, background 0.15s;
+      }
+      .nav-links a:active { background: var(--surface-2); }
+      .nav-links a.nav-active { color: var(--accent); }
       .nav-links a::after { display: none; }
     }
 
@@ -1779,24 +1803,24 @@
       <a href="#hero" class="nav-logo">
         <span>JV</span> / Portfolio
       </a>
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#photography">Photography</a></li>
-        <li><a href="#initiatives">Projects</a></li>
-        <li><a href="#cv">CV</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
       <div class="nav-end">
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"></button>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+          <span></span><span></span>
         </button>
       </div>
     </div>
   </nav>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#initiatives">Projects</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 
   <!-- ============================================================
        HERO
@@ -2959,13 +2983,18 @@
     const toggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
 
-    toggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
+    function setMenuOpen(open) {
+      navLinks.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    toggle.addEventListener('click', () => {
+      setMenuOpen(!navLinks.classList.contains('open'));
     });
 
     navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
+      a.addEventListener('click', () => setMenuOpen(false));
     });
 
     /* ── Scroll-reveal ── */
