@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justin Vinh — Researcher · Biomedical Engineer · Photographer</title>
+  <title>Justin Vinh (Light) — Researcher · Biomedical Engineer · Photographer</title>
   <meta name="description" content="Personal portfolio of Justin Vinh — immuno-oncology researcher at Dana-Farber Cancer Institute, biomedical engineer, Astronaut Scholar, and photographer." />
 
   <!-- Open Graph / link preview -->
@@ -20,9 +20,6 @@
   <meta name="twitter:description" content="Personal portfolio of Justin Vinh — immuno-oncology researcher at Dana-Farber Cancer Institute, biomedical engineer, Astronaut Scholar, and photographer." />
   <meta name="twitter:image" content="https://justinvinh.github.io/photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" />
 
-  <!-- Preload above-fold image -->
-  <link rel="preload" as="image" href="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" />
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,15 +30,15 @@
        DESIGN TOKENS — edit these to retheme the entire site
        ============================================================ */
     :root {
-      --bg:           #0d0d0d;
-      --surface:      #141414;
-      --surface-2:    #1c1c1c;
-      --border:       #2a2a2a;
-      --accent:       #f5a623;
-      --accent-dim:   #d4821a;
-      --text:         #e8e4dc;
-      --text-mid:     #c4c0b8;
-      --text-faint:   #807c78;
+      --bg:           #f4f0e8;
+      --surface:      #e8e4dc;
+      --surface-2:    #dedad1;
+      --border:       #c8c3bb;
+      --accent:       #5a8c14;
+      --accent-dim:   #3d6209;
+      --text:         #1c1814;
+      --text-mid:     #3a3630;
+      --text-faint:   #6a6660;
 
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
@@ -52,62 +49,6 @@
       --section-gap:  clamp(2.5rem, 6vw, 5rem);
       --max-w:        1200px;
       --nav-h:        60px;
-    }
-
-    [data-theme="light"] {
-      --bg:           #F4F3F2;
-      --surface:      #ECEAE8;
-      --surface-2:    #E3E0DC;
-      --border:       #C8C4BC;
-      --accent:       #b45309;
-      --accent-dim:   #92410a;
-      --text:         #1c1814;
-      --text-mid:     #3a3630;
-      --text-faint:   #6a6660;
-    }
-
-    [data-theme="light"] nav::before { background: rgba(244,243,242,0.9); }
-    [data-theme="light"] .btn-primary { color: #fff; }
-    [data-theme="light"] .btn-primary:hover { background: #c2651a; }
-    html[data-theme="light"] ::selection { color: #fff; }
-
-    /* light mode: swap hardcoded lime rgba → dark-green rgba */
-    [data-theme="light"] .pub-type-journal {
-      background: rgba(180,83,9,0.1);
-      color: var(--accent-dim);
-      border-color: rgba(180,83,9,0.3);
-    }
-    [data-theme="light"] .status-active {
-      background: rgba(180,83,9,0.1);
-      color: var(--accent);
-      border-color: rgba(180,83,9,0.35);
-    }
-    [data-theme="light"] .research-card-provenance {
-      border-left-color: rgba(180,83,9,0.35);
-    }
-    [data-theme="light"] .pub-link {
-      border-color: rgba(180,83,9,0.4);
-      background: rgba(180,83,9,0.07);
-    }
-    [data-theme="light"] .pub-link:hover {
-      background: rgba(180,83,9,0.14);
-      border-color: rgba(180,83,9,0.65);
-    }
-    [data-theme="light"] .initiative-link {
-      border-color: rgba(180,83,9,0.4);
-      background: rgba(180,83,9,0.07);
-    }
-    [data-theme="light"] .initiative-item.has-link:hover .initiative-link {
-      background: rgba(180,83,9,0.14);
-      border-color: rgba(180,83,9,0.65);
-    }
-    [data-theme="light"] .photo-filter-btn.active {
-      border-color: rgba(180,83,9,0.45);
-      background: rgba(180,83,9,0.08);
-    }
-    [data-theme="light"] [data-fs-success]:not(:empty) {
-      border-color: rgba(180,83,9,0.35);
-      background: rgba(180,83,9,0.07);
     }
 
     /* ============================================================
@@ -128,7 +69,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    ::selection { background: var(--accent); color: #000; }
+    ::selection { background: var(--accent); color: #fff; }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -192,19 +133,12 @@
       top: 0; left: 0; right: 0;
       height: var(--nav-h);
       z-index: 100;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-    }
-
-    nav::before {
-      content: '';
-      position: absolute;
-      inset: 0;
       background: rgba(13,13,13,0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      z-index: -1;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
     }
 
     .nav-inner {
@@ -255,28 +189,7 @@
     .nav-links a.nav-active { color: var(--accent); }
     .nav-links a.nav-active::after { width: 100%; }
 
-    .nav-end {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text-faint);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px; height: 28px;
-      padding: 0;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .theme-toggle:hover { color: var(--text); border-color: var(--text-mid); }
-
-.nav-toggle {
+    .nav-toggle {
       display: none;
       flex-direction: column;
       gap: 5px;
@@ -289,11 +202,8 @@
       display: block;
       width: 22px; height: 1px;
       background: var(--text);
-      transition: transform 0.3s ease, opacity 0.2s ease;
+      transition: transform 0.3s, opacity 0.3s;
     }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(3px) rotate(45deg); }
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
 
     @media (max-width: 600px) {
       #hero { padding-top: calc(var(--nav-h) + 5.5rem); padding-bottom: 3rem; }
@@ -304,44 +214,27 @@
     @media (max-width: 900px) {
       .nav-toggle { display: flex; }
       .nav-links {
-        /* now a viewport sibling — fixed works freely */
         position: fixed;
-        top: var(--nav-h); left: 0; right: 0; bottom: 0;
-        height: auto;
-        transform: translateY(-8px);
+        top: var(--nav-h); left: 0; right: 0;
         background: var(--surface);
+        border-bottom: 1px solid var(--border);
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
         gap: 0;
-        padding: 1rem 0 2rem;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        padding-block: 1rem;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s 0.22s;
-        z-index: 99;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
       }
       .nav-links.open {
         visibility: visible;
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);
-        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s 0s;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0s;
       }
-      .nav-links li { display: block; }
-      .nav-links a {
-        display: block;
-        padding: 1rem 2rem;
-        font-size: 1.15rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        color: var(--text-mid);
-        transition: color 0.15s, background 0.15s;
-      }
-      .nav-links a:active { background: var(--surface-2); }
-      .nav-links a.nav-active { color: var(--accent); }
+      .nav-links a { padding: 0.9rem 2rem; width: 100%; }
       .nav-links a::after { display: none; }
     }
 
@@ -480,11 +373,11 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #000;
+      color: #fff;
       font-weight: 500;
     }
 
-    .btn-primary:hover { background: #ffc94a; }
+    .btn-primary:hover { background: #72b01a; }
 
     .btn-ghost {
       border-color: var(--border);
@@ -573,7 +466,7 @@
       flex-direction: column;
       gap: 0.15rem;
       padding-left: 0.65rem;
-      border-left: 2px solid rgba(245,166,35,0.2);
+      border-left: 2px solid rgba(200,240,74,0.2);
     }
 
     .research-card-lab {
@@ -716,7 +609,7 @@
       flex-shrink: 0;
     }
 
-    .pub-type-journal  { background: rgba(245,166,35,0.1);  color: var(--accent-dim);  border: 1px solid rgba(245,166,35,0.2); }
+    .pub-type-journal  { background: rgba(200,240,74,0.1);  color: var(--accent-dim);  border: 1px solid rgba(200,240,74,0.2); }
     .pub-type-conf     { background: rgba(255,165,0,0.08);  color: #c47d10;            border: 1px solid rgba(255,165,0,0.2); }
     .pub-type-talk     { background: rgba(100,160,255,0.08); color: #6a9fd8;           border: 1px solid rgba(100,160,255,0.2); }
     .pub-type-poster   { background: rgba(180,100,255,0.08); color: #a875e0;           border: 1px solid rgba(180,100,255,0.2); }
@@ -757,17 +650,17 @@
       color: var(--accent);
       white-space: nowrap;
       padding: 0.25rem 0.65rem;
-      border: 1px solid rgba(245,166,35,0.35);
+      border: 1px solid rgba(200,240,74,0.35);
       border-radius: var(--radius);
-      background: rgba(245,166,35,0.06);
+      background: rgba(200,240,74,0.06);
       transition: background 0.2s, border-color 0.2s;
       display: inline-block;
       align-self: center;
     }
 
     .pub-link:hover {
-      background: rgba(245,166,35,0.12);
-      border-color: rgba(245,166,35,0.6);
+      background: rgba(200,240,74,0.12);
+      border-color: rgba(200,240,74,0.6);
     }
 
     @media (max-width: 600px) {
@@ -1074,23 +967,23 @@
       color: var(--accent);
       white-space: nowrap;
       padding: 0.3rem 0.7rem;
-      border: 1px solid rgba(245,166,35,0.35);
+      border: 1px solid rgba(200,240,74,0.35);
       border-radius: var(--radius);
-      background: rgba(245,166,35,0.06);
+      background: rgba(200,240,74,0.06);
       transition: background 0.2s, border-color 0.2s;
       align-self: center;
       flex-shrink: 0;
     }
 
     .initiative-item.has-link:hover .initiative-link {
-      background: rgba(245,166,35,0.12);
-      border-color: rgba(245,166,35,0.6);
+      background: rgba(200,240,74,0.12);
+      border-color: rgba(200,240,74,0.6);
     }
 
     .status-active {
-      background: rgba(245,166,35,0.12);
+      background: rgba(200,240,74,0.12);
       color: var(--accent);
-      border: 1px solid rgba(245,166,35,0.3);
+      border: 1px solid rgba(200,240,74,0.3);
     }
 
     .status-building {
@@ -1429,8 +1322,8 @@
       color: var(--accent);
       text-transform: uppercase;
       padding: 1rem;
-      border: 1px solid rgba(245,166,35,0.3);
-      background: rgba(245,166,35,0.06);
+      border: 1px solid rgba(200,240,74,0.3);
+      background: rgba(200,240,74,0.06);
       display: none;
     }
 
@@ -1601,8 +1494,8 @@
 
     .photo-filter-btn.active {
       color: var(--accent);
-      border-color: rgba(245,166,35,0.4);
-      background: rgba(245,166,35,0.06);
+      border-color: rgba(200,240,74,0.4);
+      background: rgba(200,240,74,0.06);
     }
 
     .photo-item.hidden { display: none; }
@@ -1802,6 +1695,9 @@
       <a href="#hero" class="nav-logo">
         <span>JV</span> / Portfolio
       </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
@@ -1812,12 +1708,6 @@
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="nav-end">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"></button>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          <span></span><span></span>
-        </button>
-      </div>
     </div>
   </nav>
 
@@ -1849,6 +1739,7 @@
         <a href="#photography" class="btn btn-primary">Photography</a>
         <a href="#initiatives" class="btn btn-primary">Projects</a>
         <a href="#about" class="btn btn-primary" style="min-width: 9.5rem; justify-content: center;">About Me</a>
+        <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-ghost" target="_blank" rel="noopener">Resume ↗</a>
       </div>
     </div>
 
@@ -1865,7 +1756,7 @@
       <div class="about-grid">
 
         <div class="about-photo-wrap reveal">
-          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" fetchpriority="high" decoding="async" />
+          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" />
           <span class="about-photo-label">Justin Vinh</span>
         </div>
 
@@ -2950,50 +2841,17 @@
 
     setTimeout(typeTick, 900);
 
-    /* ── Theme toggle ── */
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const sunSVG  = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="7.05" y2="7.05"/><line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="7.05" y2="16.95"/><line x1="16.95" y1="7.05" x2="19.07" y2="4.93"/></svg>`;
-    const moonSVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-
-    function applyTheme(light) {
-      root.setAttribute('data-theme', light ? 'light' : 'dark');
-      themeToggle.innerHTML = light ? moonSVG : sunSVG;
-      themeToggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
-    }
-
-
-    const saved = localStorage.getItem('jv-theme');
-    applyTheme(saved ? saved === 'light' : !prefersDark.matches);
-
-    prefersDark.addEventListener('change', e => {
-      if (!localStorage.getItem('jv-theme')) applyTheme(!e.matches);
-    });
-
-    themeToggle.addEventListener('click', () => {
-      const goLight = root.getAttribute('data-theme') !== 'light';
-      localStorage.setItem('jv-theme', goLight ? 'light' : 'dark');
-      applyTheme(goLight);
-    });
-
     /* ── Mobile nav toggle ── */
     const toggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
 
-    function setMenuOpen(open) {
-      navLinks.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    }
-
     toggle.addEventListener('click', () => {
-      setMenuOpen(!navLinks.classList.contains('open'));
+      const open = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
     });
 
     navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => setMenuOpen(false));
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
     /* ── Scroll-reveal ── */
@@ -3055,7 +2913,7 @@
       const logo = document.querySelector('.nav-logo');
       const original = logo.innerHTML;
       const text = 'JV / PORTFOLIO';
-      const glitchChars = 'abcdefghijklmnopqrstuvwxyz0123456789·/—';
+      const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·/—';
       let frame = 0;
       const totalFrames = 18;
 
@@ -3200,26 +3058,6 @@
         bookingStatus.textContent = 'Network error — try the contact form below.';
       }
     });
-
-    /* ── Background prefetch gallery images ── */
-    function prefetchGallery() {
-      const imgs = Array.from(document.querySelectorAll('.photo-item img'));
-      imgs.forEach((img, i) => {
-        const src = img.getAttribute('src');
-        if (!src) return;
-        setTimeout(() => {
-          const pre = new Image();
-          pre.decoding = 'async';
-          pre.src = src;
-        }, i * 80);
-      });
-    }
-
-    if ('requestIdleCallback' in window) {
-      window.addEventListener('load', () => requestIdleCallback(prefetchGallery, { timeout: 3000 }));
-    } else {
-      window.addEventListener('load', () => setTimeout(prefetchGallery, 1500));
-    }
   </script>
 
 </body>
