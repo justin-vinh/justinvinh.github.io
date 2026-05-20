@@ -23,8 +23,8 @@
       --accent:       #c8f04a;
       --accent-dim:   #8aab27;
       --text:         #e8e4dc;
-      --text-mid:     #8a857c;
-      --text-faint:   #3d3a35;
+      --text-mid:     #b8b3aa;
+      --text-faint:   #6e6860;
 
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
@@ -174,7 +174,7 @@
       transition: transform 0.3s, opacity 0.3s;
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 900px) {
       .nav-toggle { display: flex; }
       .nav-links {
         position: fixed;
@@ -184,10 +184,19 @@
         flex-direction: column;
         gap: 0;
         padding-block: 1rem;
-        transform: translateY(-110%);
-        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
       }
-      .nav-links.open { transform: translateY(0); }
+      .nav-links.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0s;
+      }
       .nav-links a { padding: 0.9rem 2rem; width: 100%; }
       .nav-links a::after { display: none; }
     }
@@ -452,6 +461,194 @@
     .card-link:hover { gap: 0.7rem; }
 
     /* ============================================================
+       PUBLICATIONS & PRESENTATIONS
+       ============================================================ */
+    .pub-group { margin-bottom: 2.5rem; }
+    .pub-group:last-child { margin-bottom: 0; }
+
+    .pub-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    .publications-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .pub-entry {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .pub-entry:last-child { border-bottom: none; }
+    .pub-entry:hover { background: var(--surface); }
+
+    .pub-year {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+      white-space: nowrap;
+    }
+
+    .pub-body { min-width: 0; }
+
+    .pub-top {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    .pub-type {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+
+    .pub-type-journal  { background: rgba(200,240,74,0.1);  color: var(--accent-dim);  border: 1px solid rgba(200,240,74,0.2); }
+    .pub-type-conf     { background: rgba(255,165,0,0.08);  color: #c47d10;            border: 1px solid rgba(255,165,0,0.2); }
+    .pub-type-talk     { background: rgba(100,160,255,0.08); color: #6a9fd8;           border: 1px solid rgba(100,160,255,0.2); }
+    .pub-type-poster   { background: rgba(180,100,255,0.08); color: #a875e0;           border: 1px solid rgba(180,100,255,0.2); }
+
+    .pub-venue {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+
+    .pub-title {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .pub-detail {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      color: var(--text-faint);
+      line-height: 1.6;
+    }
+
+    .pub-detail strong {
+      color: var(--accent-dim);
+      font-weight: 400;
+    }
+
+    .pub-link {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(200,240,74,0.35);
+      border-radius: var(--radius);
+      background: rgba(200,240,74,0.06);
+      transition: background 0.2s, border-color 0.2s;
+      align-self: center;
+    }
+
+    .pub-link:hover {
+      background: rgba(200,240,74,0.12);
+      border-color: rgba(200,240,74,0.6);
+    }
+
+    @media (max-width: 600px) {
+      .pub-entry { grid-template-columns: 1fr; gap: 0.4rem; }
+      .pub-year { display: none; }
+      .pub-link { align-self: flex-start; }
+    }
+
+    /* ── Presentations table ── */
+    .pres-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+    }
+
+    .pres-table thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pres-table th {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding: 0.6rem 1rem;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .pres-table td {
+      padding: 0.7rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .pres-table tbody tr:last-child td { border-bottom: none; }
+    .pres-table tbody tr:hover td { background: var(--surface); }
+
+    .pres-table .col-year {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      width: 3.5rem;
+    }
+
+    .pres-table .col-type { width: 5rem; }
+
+    .pres-table .col-event { color: var(--text); }
+
+    .pres-table .col-location {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+    }
+
+    .pres-table .col-note {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--accent-dim);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .pres-table .col-location,
+      .pres-table .col-note { display: none; }
+    }
+
+    /* ============================================================
        PHOTOGRAPHY
        ============================================================ */
     #photography { background: var(--surface); }
@@ -631,6 +828,23 @@
       .about-grid { grid-template-columns: 1fr; }
     }
 
+    .about-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 80%;
+      border: 2px solid var(--border);
+      margin-bottom: 2rem;
+      filter: grayscale(15%);
+      transition: filter 0.3s;
+      transform: scale(3);
+      transform-origin: center 20%;
+      clip-path: circle(50%);
+    }
+
+    .about-photo:hover { filter: grayscale(0%); }
+
     .about-bio {
       font-size: 1rem;
       color: var(--text-mid);
@@ -642,38 +856,40 @@
 
     .about-bio strong { color: var(--text); font-weight: 400; }
 
-    .cv-block { display: flex; flex-direction: column; gap: 2rem; }
+    .cv-block { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .cv-section-title {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.58rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-faint);
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
-    .cv-entries { display: flex; flex-direction: column; gap: 1.25rem; }
+    .cv-entries { display: flex; flex-direction: column; gap: 0.6rem; }
 
     .cv-entry-year {
       font-family: var(--font-mono);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       color: var(--accent-dim);
-      letter-spacing: 0.08em;
-      margin-bottom: 0.2rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.05rem;
     }
 
     .cv-entry-title {
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       color: var(--text);
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.05rem;
+      line-height: 1.3;
     }
 
     .cv-entry-sub {
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       color: var(--text-faint);
+      line-height: 1.3;
     }
 
     /* ============================================================
@@ -735,6 +951,88 @@
     .contact-link-item:hover { background: var(--surface); color: var(--text); }
 
     .contact-link-item .arrow { color: var(--accent); }
+
+    /* ── Contact form ── */
+    .contact-form-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-field input[aria-invalid="true"],
+    .form-field textarea[aria-invalid="true"] {
+      border-color: #e05c5c;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    [data-fs-error] {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #e05c5c;
+      letter-spacing: 0.05em;
+      min-height: 1em;
+    }
+
+    [data-fs-success] {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      padding: 1rem;
+      border: 1px solid rgba(200,240,74,0.3);
+      background: rgba(200,240,74,0.06);
+      display: none;
+    }
+
+    [data-fs-success]:not(:empty) { display: block; }
+
+    .btn-submit {
+      align-self: flex-start;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
     /* ============================================================
        FOOTER
@@ -858,6 +1156,7 @@
       </button>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#photography">Photography</a></li>
         <li><a href="#initiatives">Initiatives</a></li>
         <li><a href="#about">About</a></li>
@@ -916,7 +1215,7 @@
         <article class="research-card">
           <div class="research-card-meta">
             <span>2025 – Present</span>
-            <span class="research-card-tag">Active</span>
+            <span class="research-card-tag">Lindvall &amp; Rhee Labs</span>
           </div>
           <h3>
             Large Language Models for Clinical Free Text Extraction &amp; Serious Illness Care
@@ -938,23 +1237,44 @@
 
         <article class="research-card">
           <div class="research-card-meta">
-            <span>2021 – 2025</span>
+            <span>2022 – 2023</span>
             <span class="research-card-tag">UVA Sheybani Lab</span>
           </div>
           <h3>
-            Focused Ultrasound, Dendritic Cells, &amp; Glioblastoma Sonodynamic Therapy
+            Focused Ultrasound &amp; Dendritic Cell Immunotherapy
           </h3>
           <p>
-            Characterized the effects of 5-ALA sonodynamic therapy on cancerous glioma stem cells
-            and extracellular vesicles to optimize treatment-induced cell death. Developed a novel,
-            cost-accessible in vitro focused ultrasound platform and researched FUS-enhanced dendritic
-            cell activity in oncolytic immunotherapies — presenting findings at national conferences
-            including the BMES Annual Meeting and NIH.
+            Investigated how focused ultrasound (FUS) modulates dendritic cell activity to enhance
+            oncolytic immunotherapies. Characterized extracellular vesicles released by dendritic
+            cells pre- and post-FUS exposure, and developed a novel cost-accessible in vitro FUS
+            platform to make these studies more broadly available to researchers.
           </p>
           <div class="research-card-footer">
-            <span class="tag-chip">Immunoengineering</span>
             <span class="tag-chip">Focused Ultrasound</span>
+            <span class="tag-chip">Dendritic Cells</span>
+            <span class="tag-chip">Immunotherapy</span>
+            <span class="tag-chip">EVs</span>
+          </div>
+        </article>
+
+        <article class="research-card">
+          <div class="research-card-meta">
+            <span>2023 – 2025</span>
+            <span class="research-card-tag">UVA Sheybani Lab</span>
+          </div>
+          <h3>
+            5-ALA Sonodynamic Therapy in Glioblastoma
+          </h3>
+          <p>
+            Characterized the effects of 5-aminolevulinic acid (5-ALA) sonodynamic therapy on
+            cancerous glioma stem cells and their secreted extracellular vesicles, with the goal
+            of optimizing treatment-induced cell death and understanding downstream immunological
+            signaling in the tumor microenvironment.
+          </p>
+          <div class="research-card-footer">
+            <span class="tag-chip">Sonodynamic Therapy</span>
             <span class="tag-chip">Glioblastoma</span>
+            <span class="tag-chip">5-ALA</span>
             <span class="tag-chip">EVs</span>
           </div>
         </article>
@@ -962,7 +1282,7 @@
         <article class="research-card">
           <div class="research-card-meta">
             <span>2023</span>
-            <span class="research-card-tag">NIH / NCI</span>
+            <span class="research-card-tag">National Cancer Institute</span>
           </div>
           <h3>
             Multiplex Immunofluorescence &amp; Machine Learning for Tumor Microenvironment Analysis
@@ -983,6 +1303,112 @@
         </article>
 
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       PUBLICATIONS & PRESENTATIONS
+       ============================================================ -->
+  <section class="section" id="publications">
+    <div class="container">
+      <p class="section-label reveal">Scholarship</p>
+      <h2 class="section-title reveal">Publications &amp; Presentations</h2>
+
+      <!-- ── Journal Articles ── -->
+      <div class="pub-group reveal">
+        <p class="pub-group-label">Journal Articles</p>
+        <div class="publications-list">
+
+          <div class="pub-entry">
+            <span class="pub-year">2026</span>
+            <div class="pub-body">
+              <div class="pub-top">
+                <span class="pub-type pub-type-journal">Published</span>
+                <span class="pub-venue">JCO Oncology Practice</span>
+              </div>
+              <p class="pub-title" style="margin-bottom:0.25rem;">When Is the Right Time? A Qualitative Study of Timing of Specialty Palliative Care in Patients With Brain Tumors</p>
+              <p class="pub-detail">
+                Rhee JY, Miller P, Tentor Z, <strong>Vinh J</strong>, Tulsky JA, Reich A, Wright AA, Lindvall C
+              </p>
+            </div>
+            <a class="pub-link" href="https://ascopubs.org/doi/abs/10.1200/OP-25-01360" target="_blank" rel="noopener">Read ↗</a>
+          </div>
+
+          <!-- Add journal articles here -->
+
+        </div>
+      </div>
+
+      <!-- ── Conferences & Presentations ── -->
+      <div class="pub-group reveal">
+        <p class="pub-group-label">Conferences &amp; Presentations</p>
+        <table class="pres-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Type</th>
+              <th>Event</th>
+              <th>Location</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-type"><span class="pub-type pub-type-talk">Talk</span></td>
+              <td class="col-event">UVA Undergraduate Research Symposium</td>
+              <td class="col-location">Charlottesville, VA</td>
+              <td class="col-note"></td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-type"><span class="pub-type pub-type-talk">Talk</span></td>
+              <td class="col-event">Atlantic Coast Conference Meeting of the Minds</td>
+              <td class="col-location">Pittsburgh, PA</td>
+              <td class="col-note">UVA Representative</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-type"><span class="pub-type pub-type-poster">Poster</span></td>
+              <td class="col-event">NURVa Symposium at Virginia State Capitol</td>
+              <td class="col-location">Richmond, VA</td>
+              <td class="col-note">UVA Representative</td>
+            </tr>
+            <tr>
+              <td class="col-year">2024</td>
+              <td class="col-type"><span class="pub-type pub-type-talk">Talk</span></td>
+              <td class="col-event">Astronaut Scholarship Innovators Symposium</td>
+              <td class="col-location">Houston, TX</td>
+              <td class="col-note"></td>
+            </tr>
+            <tr>
+              <td class="col-year">2024</td>
+              <td class="col-type"><span class="pub-type pub-type-poster">Poster</span></td>
+              <td class="col-event">Biomedical Engineering Society Annual National Meeting</td>
+              <td class="col-location">Baltimore, MD</td>
+              <td class="col-note"></td>
+            </tr>
+            <tr>
+              <td class="col-year">2023</td>
+              <td class="col-type"><span class="pub-type pub-type-talk">Talk</span></td>
+              <td class="col-event">UVA Rodman Engineering Research Symposium</td>
+              <td class="col-location">Charlottesville, VA</td>
+              <td class="col-note">3rd Place</td>
+            </tr>
+            <tr>
+              <td class="col-year">2023</td>
+              <td class="col-type"><span class="pub-type pub-type-poster">Poster</span></td>
+              <td class="col-event">NIH Summer Research Symposium</td>
+              <td class="col-location">Bethesda, MD</td>
+              <td class="col-note"></td>
+            </tr>
+            <!-- Add rows here -->
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </section>
 
@@ -1137,6 +1563,7 @@
       <div class="about-grid">
 
         <div>
+          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo reveal" />
           <p class="section-label reveal">About</p>
           <h2 class="section-title reveal">Who I Am</h2>
           <div class="about-bio reveal">
@@ -1191,17 +1618,37 @@
               <div>
                 <div class="cv-entry-year">2025 – Present</div>
                 <div class="cv-entry-title">Research Assistant</div>
-                <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs</div>
+                <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs · Boston, MA</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">Spring 2025</div>
+                <div class="cv-entry-title">Course Instructor — BME 1501: Finding &amp; Figuring Cancer</div>
+                <div class="cv-entry-sub">University of Virginia · School of Engineering</div>
               </div>
               <div>
                 <div class="cv-entry-year">Summer 2023</div>
                 <div class="cv-entry-title">Undergraduate Research Fellow</div>
-                <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program</div>
+                <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program · Bethesda, MD</div>
               </div>
               <div>
                 <div class="cv-entry-year">2021 – 2025</div>
                 <div class="cv-entry-title">Research Assistant</div>
-                <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering</div>
+                <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering · Charlottesville, VA</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2022 – 2025</div>
+                <div class="cv-entry-title">Co-Founder &amp; Director</div>
+                <div class="cv-entry-sub">Project Ray · Boston, MA</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2022 – 2025</div>
+                <div class="cv-entry-title">Founder</div>
+                <div class="cv-entry-sub">C4 Initiative — Compassionate Connections · University of Virginia</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2019 – Present</div>
+                <div class="cv-entry-title">Freelance Photographer</div>
+                <div class="cv-entry-sub">Justin Vinh Photography · justinvinh.com</div>
               </div>
             </div>
           </div>
@@ -1213,6 +1660,16 @@
                 <div class="cv-entry-year">2025</div>
                 <div class="cv-entry-title">UVA Engineering Outstanding Student of the Year</div>
                 <div class="cv-entry-sub">University of Virginia</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2025</div>
+                <div class="cv-entry-title">Harrison Undergraduate Research Award</div>
+                <div class="cv-entry-sub">University of Virginia</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2025</div>
+                <div class="cv-entry-title">Raven Fellowship</div>
+                <div class="cv-entry-sub">University of Virginia · Raven Society</div>
               </div>
               <div>
                 <div class="cv-entry-year">2024</div>
@@ -1245,28 +1702,61 @@
   <section class="section" id="contact">
     <div class="container">
       <div class="contact-inner">
+
         <div class="reveal">
           <h2 class="contact-heading">Let's<br /><em>connect.</em></h2>
           <p class="contact-note">
             Open to research collaborations, photography commissions, speaking invitations, and
             interesting conversations. I try to respond within a week.
           </p>
+          <div class="contact-links" style="margin-top:2rem;">
+            <a class="contact-link-item" href="mailto:jvinh21@gmail.com">
+              Email
+              <span class="arrow">↗</span>
+            </a>
+            <a class="contact-link-item" href="https://www.linkedin.com/in/justin-n-vinh" target="_blank" rel="noopener">
+              LinkedIn
+              <span class="arrow">↗</span>
+            </a>
+            <a class="contact-link-item" href="https://justinvinh.com" target="_blank" rel="noopener">
+              Photography Portfolio
+              <span class="arrow">↗</span>
+            </a>
+          </div>
         </div>
 
-        <div class="contact-links reveal">
-          <a class="contact-link-item" href="mailto:jvinh21@gmail.com">
-            Email
-            <span class="arrow">↗</span>
-          </a>
-          <a class="contact-link-item" href="https://www.linkedin.com/in/justin-n-vinh" target="_blank" rel="noopener">
-            LinkedIn
-            <span class="arrow">↗</span>
-          </a>
-          <a class="contact-link-item" href="https://justinvinh.com" target="_blank" rel="noopener">
-            Photography Portfolio
-            <span class="arrow">↗</span>
-          </a>
+        <div class="reveal">
+          <div data-fs-error></div>
+
+          <form id="contact-form" class="contact-form-wrap">
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Your name" required data-fs-field />
+              <span data-fs-error="name"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" placeholder="you@example.com" required data-fs-field />
+              <span data-fs-error="email"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" placeholder="Research · Photography · Other" data-fs-field />
+              <span data-fs-error="subject"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" placeholder="What's on your mind?" required data-fs-field></textarea>
+              <span data-fs-error="message"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit" data-fs-submit-btn>Send Message</button>
+          </form>
         </div>
+
       </div>
     </div>
   </section>
@@ -1279,11 +1769,17 @@
       <p class="footer-text">
         © 2026 Justin Vinh. All rights reserved.
       </p>
-      <p class="footer-text">
-        Hand-coded HTML · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
-      </p>
     </div>
   </footer>
+
+  <!-- ============================================================
+       FORMSPREE
+       ============================================================ -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xpqnqvpj' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
   <!-- ============================================================
        LIGHTBOX (photo viewer)
