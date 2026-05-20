@@ -736,8 +736,15 @@
     }
 
     @media (max-width: 600px) {
-      .pres-table .col-location,
-      .pres-table .col-note { display: none; }
+      .pres-table thead { display: none; }
+      .pres-table, .pres-table tbody, .pres-table tr, .pres-table td { display: block; width: 100%; }
+      .pres-table tr { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); }
+      .pres-table tbody tr:last-child { border-bottom: none; }
+      .pres-table td { padding: 0; border: none; }
+      .pres-table .col-location, .pres-table .col-note { display: none; }
+      .pres-table .col-year { display: inline; margin-right: 0.6rem; }
+      .pres-table .col-type { display: inline; }
+      .pres-table .col-event { display: block; margin-top: 0.35rem; font-size: 0.85rem; }
     }
 
     /* ============================================================
