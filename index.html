@@ -32,7 +32,7 @@
 
       --radius:       2px;
       --gap:          clamp(1rem, 3vw, 2rem);
-      --section-gap:  clamp(4rem, 10vw, 8rem);
+      --section-gap:  clamp(2.5rem, 6vw, 5rem);
       --max-w:        1200px;
       --nav-h:        60px;
     }
@@ -42,7 +42,7 @@
        ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
     body {
       background: var(--bg);
@@ -94,7 +94,7 @@
     .divider {
       height: 1px;
       background: var(--border);
-      margin-block: var(--section-gap);
+      margin-block: 0;
     }
 
     /* ============================================================
@@ -377,10 +377,14 @@
        ============================================================ */
     .research-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
+    }
+
+    @media (max-width: 680px) {
+      .research-grid { grid-template-columns: 1fr; }
     }
 
     .research-card {
@@ -732,11 +736,26 @@
     /* ============================================================
        INITIATIVES
        ============================================================ */
+    .initiative-group { margin-bottom: 2rem; }
+    .initiative-group:last-child { margin-bottom: 0; }
+
+    .initiative-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
     .initiatives-list {
       display: flex;
       flex-direction: column;
       gap: 0;
       border: 1px solid var(--border);
+      border-top: none;
     }
 
     .initiative-item {
@@ -751,7 +770,9 @@
     }
 
     .initiative-item:last-child { border-bottom: none; }
-    .initiative-item:hover { background: var(--surface); }
+    .initiative-item { cursor: default; }
+    .initiative-item.has-link { cursor: pointer; }
+    .initiative-item.has-link:hover { background: var(--surface); }
 
     .initiative-num {
       font-family: var(--font-mono);
@@ -768,6 +789,7 @@
       font-weight: 400;
       margin-bottom: 0.35rem;
     }
+
 
     .initiative-body p {
       font-size: 0.85rem;
@@ -828,22 +850,39 @@
       .about-grid { grid-template-columns: 1fr; }
     }
 
-    .about-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 80%;
-      border: 2px solid var(--border);
-      margin-bottom: 2rem;
-      filter: grayscale(15%);
-      transition: filter 0.3s;
-      transform: scale(3);
-      transform-origin: center 20%;
-      clip-path: circle(50%);
+    .about-photo-wrap {
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative;
     }
 
-    .about-photo:hover { filter: grayscale(0%); }
+    .about-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: grayscale(20%);
+      transition: filter 0.4s, transform 0.4s;
+    }
+
+    .about-photo-wrap:hover .about-photo {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .about-photo-label {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
 
     .about-bio {
       font-size: 1rem;
@@ -1499,56 +1538,114 @@
       <p class="section-label reveal">Personal Initiatives</p>
       <h2 class="section-title reveal">Things I've Built</h2>
 
-      <div class="initiatives-list reveal">
+      <!-- Organizations -->
+      <div class="initiative-group reveal">
+        <p class="initiative-group-label">Organizations</p>
+        <div class="initiatives-list">
 
-        <a class="initiative-item" href="#" target="_blank" rel="noopener">
-          <span class="initiative-num">001</span>
-          <div class="initiative-body">
-            <h3>Project Ray</h3>
-            <p>
-              Co-founded and lead an organization that partners with pediatric patients to design
-              personalized toys, connecting local makers and makerspaces to 3D print their creations.
-            </p>
+          <a class="initiative-item has-link" href="https://projectrayboston.wixsite.com/project-ray" target="_blank" rel="noopener">
+            <span class="initiative-num">01</span>
+            <div class="initiative-body">
+              <h3>Project Ray</h3>
+              <p>
+                Co-founded and lead an organization that partners with pediatric patients to design
+                personalized toys, connecting local makers and makerspaces to 3D print their creations.
+              </p>
+            </div>
+            <span class="pub-link">Visit ↗</span>
+          </a>
+
+          <div class="initiative-item">
+            <span class="initiative-num">02</span>
+            <div class="initiative-body">
+              <h3>The C4 Initiative</h3>
+              <p>
+                College Companions &amp; Compassionate Connections (C4) — a peer mentorship program I founded
+                at UVA pairing first-year and transfer students with upperclassmen to reduce loneliness
+                and social isolation, securing over $3,000 in funding.
+              </p>
+            </div>
           </div>
-          <span class="initiative-status status-active">Active</span>
-        </a>
 
-        <a class="initiative-item" href="https://justinvinh.com" target="_blank" rel="noopener">
-          <span class="initiative-num">002</span>
-          <div class="initiative-body">
-            <h3>Justin Vinh Photography</h3>
-            <p>
-              Freelance photography practice since 2019 — event, macro, nature, portrait, and
-              astrophotography for individuals, organizations, and churches.
-            </p>
+          <a class="initiative-item has-link" href="https://photoclubloudoun.wixsite.com/mysite" target="_blank" rel="noopener">
+            <span class="initiative-num">03</span>
+            <div class="initiative-body">
+              <h3>NOVA Loudoun Photography Club</h3>
+              <p>
+                Founded a photography club at Northern Virginia Community College connecting
+                enthusiasts through workshops, critiques, and collaborative shoots.
+              </p>
+            </div>
+            <span class="pub-link">Visit ↗</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Personal -->
+      <div class="initiative-group reveal">
+        <p class="initiative-group-label">Personal</p>
+        <div class="initiatives-list">
+
+          <div class="initiative-item">
+            <span class="initiative-num">01</span>
+            <div class="initiative-body">
+              <h3>BME 1501 — Finding &amp; Figuring Cancer</h3>
+              <p>
+                Designed and taught a 1-credit cancer biology course at UVA to make translational
+                oncology research accessible to undergraduates across all majors.
+              </p>
+            </div>
           </div>
-          <span class="initiative-status status-active">Active</span>
-        </a>
 
-        <a class="initiative-item" href="#" target="_blank" rel="noopener">
-          <span class="initiative-num">003</span>
-          <div class="initiative-body">
-            <h3>C4 Initiative — Compassionate Connections</h3>
-            <p>
-              Founded a peer mentorship program at UVA pairing first-year and transfer students with
-              upperclassmen to reduce loneliness and social isolation — securing over $3,000 in funding.
-            </p>
-          </div>
-          <span class="initiative-status status-archive">Concluded 2025</span>
-        </a>
+          <a class="initiative-item has-link" href="https://justinvinh.com" target="_blank" rel="noopener">
+            <span class="initiative-num">02</span>
+            <div class="initiative-body">
+              <h3>Justin Vinh Photography</h3>
+              <p>
+                Freelance photography practice since 2019 — event, macro, nature, portrait, and
+                astrophotography for individuals, organizations, and churches.
+              </p>
+            </div>
+            <span class="pub-link">Visit ↗</span>
+          </a>
 
-        <a class="initiative-item" href="#" target="_blank" rel="noopener">
-          <span class="initiative-num">004</span>
-          <div class="initiative-body">
-            <h3>BME 1501 — Finding &amp; Figuring Cancer</h3>
-            <p>
-              Designed and taught a 1-credit cancer biology course at UVA to make translational
-              oncology research accessible to undergraduates across all majors.
-            </p>
-          </div>
-          <span class="initiative-status status-archive">Spring 2025</span>
-        </a>
+        </div>
+      </div>
 
+      <!-- Coding Projects -->
+      <div class="initiative-group reveal">
+        <p class="initiative-group-label">Coding Projects</p>
+        <div class="initiatives-list">
+
+          <a class="initiative-item has-link" href="https://github.com/justinvinh/project-ryland" target="_blank" rel="noopener">
+            <span class="initiative-num">01</span>
+            <div class="initiative-body">
+              <h3>Project Ryland</h3>
+              <p>
+                A Python package providing standardized tools for using LLMs in clinical research,
+                developed at Dana-Farber. Features automated cost tracking, operation checkpointing
+                for resumable workflows, and a prompt gallery for managing studies at scale.
+              </p>
+            </div>
+            <span class="pub-link">GitHub ↗</span>
+          </a>
+
+          <a class="initiative-item has-link" href="https://github.com/justinvinh/watney-project" target="_blank" rel="noopener">
+            <span class="initiative-num">02</span>
+            <div class="initiative-body">
+              <h3>WATNEY</h3>
+              <p>
+                An interactive browser-based platform for reviewing and annotating LLM-extracted
+                oncology progression events from clinical notes. Supports side-by-side review,
+                collaborative annotation, and export — built locally on SQLite with a demo mode
+                for new users.
+              </p>
+            </div>
+            <span class="pub-link">GitHub ↗</span>
+          </a>
+
+        </div>
       </div>
     </div>
   </section>
@@ -1560,10 +1657,14 @@
        ============================================================ -->
   <section class="section" id="about">
     <div class="container">
+      <div class="about-photo-wrap reveal">
+        <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" />
+        <span class="about-photo-label">Justin Vinh</span>
+      </div>
+
       <div class="about-grid">
 
         <div>
-          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo reveal" />
           <p class="section-label reveal">About</p>
           <h2 class="section-title reveal">Who I Am</h2>
           <div class="about-bio reveal">
