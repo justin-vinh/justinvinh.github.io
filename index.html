@@ -522,7 +522,7 @@
 
     .pub-entry {
       display: grid;
-      grid-template-columns: 3rem 1fr auto;
+      grid-template-columns: 3rem 1fr;
       align-items: baseline;
       gap: 1.25rem;
       padding: 1rem 1.25rem;
@@ -596,17 +596,19 @@
 
     .pub-link {
       font-family: var(--font-mono);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
       white-space: nowrap;
-      padding: 0.3rem 0.7rem;
+      padding: 0.15rem 0.5rem;
       border: 1px solid rgba(200,240,74,0.35);
       border-radius: var(--radius);
       background: rgba(200,240,74,0.06);
       transition: background 0.2s, border-color 0.2s;
-      align-self: center;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 0.5rem;
     }
 
     .pub-link:hover {
@@ -617,7 +619,6 @@
     @media (max-width: 600px) {
       .pub-entry { grid-template-columns: 1fr; gap: 0.4rem; }
       .pub-year { display: none; }
-      .pub-link { align-self: flex-start; }
     }
 
     /* ── News list ── */
@@ -1446,33 +1447,34 @@
     /* ── Skills toolkit ── */
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 0.75rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem 2rem;
+      margin-top: 0.5rem;
     }
 
+    @media (max-width: 900px) { .skill-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .skill-grid { grid-template-columns: 1fr; } }
 
     .skill-category-label {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-faint);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.35rem;
     }
 
     .skill-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.25rem;
     }
 
     .skill-chip {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.65rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.03em;
+      padding: 0.15rem 0.45rem;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       color: var(--text-mid);
@@ -1569,11 +1571,11 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#photography">Photography</a></li>
         <li><a href="#initiatives">Initiatives</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1612,50 +1614,302 @@
 
     <div class="hero-scroll-hint">Scroll</div>
   </section>
+  <div class="divider"></div>
 
   <!-- ============================================================
-       SKILLS BAR
+       ABOUT / CV SNAPSHOT
        ============================================================ -->
-  <div class="skills-bar">
+  <section class="section" id="about">
     <div class="container">
-      <div class="skills-bar-inner">
-        <div class="skills-bar-group">
-          <div class="skills-bar-label">Computational</div>
-          <div class="skills-bar-chips">
-            <span class="skills-bar-chip">Python</span>
-            <span class="skills-bar-chip">R</span>
-            <span class="skills-bar-chip">MATLAB</span>
-            <span class="skills-bar-chip">SQL</span>
-            <span class="skills-bar-chip">Databricks</span>
-            <span class="skills-bar-chip">C++</span>
-            <span class="skills-bar-chip">UNIX</span>
+      <!-- Photo + Bio -->
+      <div class="about-grid">
+
+        <div class="about-photo-wrap reveal">
+          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" />
+          <span class="about-photo-label">Justin Vinh</span>
+        </div>
+
+        <div>
+          <p class="section-label reveal">About</p>
+          <h2 class="section-title reveal">Who I Am</h2>
+          <div class="about-bio reveal">
+            <p>
+              I'm an <strong>immuno-oncology researcher</strong> at Dana-Farber Cancer Institute,
+              working in the Lindvall &amp; Rhee Labs under Drs. Charlotta Lindvall and John Rhee.
+              I graduated from the <strong>University of Virginia</strong> in 2025 with a B.S. in
+              Biomedical Engineering (Highest Distinction) and a Minor in Data Science, with a focus
+              on immunoengineering — and a 3.90 GPA.
+            </p>
+            <p>
+              My research sits at the intersection of <strong>translational medicine and artificial
+              intelligence</strong>. At Dana-Farber, I leverage LLMs for clinical free text analysis
+              and serious illness care. My prior work at UVA and the National Cancer Institute spanned
+              focused ultrasound immunotherapy, single-cell multiplex imaging, and machine learning
+              approaches to characterizing the tumor microenvironment.
+            </p>
+            <p>
+              Outside research, I'm a <strong>freelance photographer</strong> of over a decade,
+              co-founder of Project Ray, and a committed humanitarian volunteering at free medical
+              clinics and homeless ministries. I play guitar, chase clear skies for astrophotography,
+              and remain endlessly fascinated by the cells that hunt cells.
+            </p>
+            <div style="margin-top:1.25rem; display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-primary" target="_blank" rel="noopener">Download Resume</a>
+              <a href="https://www.linkedin.com/in/justin-n-vinh" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
           </div>
         </div>
-        <div class="skills-bar-group">
-          <div class="skills-bar-label">Laboratory</div>
-          <div class="skills-bar-chips">
-            <span class="skills-bar-chip">Cell culture</span>
-            <span class="skills-bar-chip">IF microscopy</span>
-            <span class="skills-bar-chip">EV isolation</span>
-            <span class="skills-bar-chip">PCR</span>
-            <span class="skills-bar-chip">Western blots</span>
-            <span class="skills-bar-chip">BCA assays</span>
-            <span class="skills-bar-chip">Focused ultrasound</span>
+
+      </div>
+
+      <!-- Resume listing -->
+      <div class="about-resume reveal-stagger">
+
+        <div>
+          <div class="cv-section-title">Education</div>
+          <div class="cv-entries">
+            <div>
+              <div class="cv-entry-year">2021 – 2025</div>
+              <div class="cv-entry-title">B.S. Biomedical Engineering, Highest Distinction</div>
+              <div class="cv-entry-sub">University of Virginia · Minor in Data Science · 3.90 GPA</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2018 – 2021</div>
+              <div class="cv-entry-title">Honors Program (Dual-Enrolled)</div>
+              <div class="cv-entry-sub">Northern Virginia Community College · 4.00 GPA</div>
+            </div>
           </div>
         </div>
-        <div class="skills-bar-group">
-          <div class="skills-bar-label">Photography</div>
-          <div class="skills-bar-chips">
-            <span class="skills-bar-chip">Portraits</span>
-            <span class="skills-bar-chip">Events</span>
-            <span class="skills-bar-chip">Professional headshots</span>
-            <span class="skills-bar-chip">Adobe Lightroom</span>
-            <span class="skills-bar-chip">Capture One</span>
+
+        <div>
+          <div class="cv-section-title">Experience</div>
+          <div class="cv-entries">
+            <div>
+              <div class="cv-entry-year">2025 – Present</div>
+              <div class="cv-entry-title">Research Assistant</div>
+              <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs · Boston, MA</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2019 – Present</div>
+              <div class="cv-entry-title">Freelance Photographer</div>
+              <div class="cv-entry-sub">Justin Vinh Photography · justinvinh.com</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">Spring 2025</div>
+              <div class="cv-entry-title">Course Instructor — BME 1501: Finding &amp; Figuring Cancer</div>
+              <div class="cv-entry-sub">University of Virginia · School of Engineering</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">Summer 2023</div>
+              <div class="cv-entry-title">Undergraduate Research Fellow</div>
+              <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program · Bethesda, MD</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2021 – 2025</div>
+              <div class="cv-entry-title">Research Assistant</div>
+              <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering · Charlottesville, VA</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2022 – 2025</div>
+              <div class="cv-entry-title">Co-Founder &amp; Director</div>
+              <div class="cv-entry-sub">Project Ray · Boston, MA</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2023 – 2024</div>
+              <div class="cv-entry-title">Emergency Medicine Scribe</div>
+              <div class="cv-entry-sub">UVA Health · Emergency Department · Charlottesville, VA</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2022 – 2025</div>
+              <div class="cv-entry-title">Founder</div>
+              <div class="cv-entry-sub">C4 Initiative — Compassionate Connections · University of Virginia</div>
+            </div>
           </div>
+        </div>
+
+        <div>
+          <div class="cv-section-title">Awards &amp; Honors</div>
+          <div class="cv-entries">
+            <div>
+              <div class="cv-entry-year">2025</div>
+              <div class="cv-entry-title">UVA Engineering Outstanding Student of the Year</div>
+              <div class="cv-entry-sub">University of Virginia</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2024</div>
+              <div class="cv-entry-title">Harrison Undergraduate Research Award</div>
+              <div class="cv-entry-sub">University of Virginia</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2024</div>
+              <div class="cv-entry-title">Raven Fellowship</div>
+              <div class="cv-entry-sub">University of Virginia · Raven Society</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2024</div>
+              <div class="cv-entry-title">Astronaut Scholarship</div>
+              <div class="cv-entry-sub">Astronaut Scholarship Foundation</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2024</div>
+              <div class="cv-entry-title">Churchill Scholarship Nomination</div>
+              <div class="cv-entry-sub">University of Virginia</div>
+            </div>
+            <div>
+              <div class="cv-entry-year">2023</div>
+              <div class="cv-entry-title">Barry Goldwater Scholarship Nomination</div>
+              <div class="cv-entry-sub">University of Virginia</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Service & Volunteering -->
+      <div class="about-coursework reveal">
+        <div class="cv-section-title">Service &amp; Volunteering</div>
+        <div class="about-resume" style="grid-template-columns: repeat(2, 1fr); border-top: none; padding-top: 0.5rem;">
+
+          <div>
+            <div class="cv-entries">
+              <div>
+                <div class="cv-entry-year">2026 – Present</div>
+                <div class="cv-entry-title">Harvard Square Homeless Shelter</div>
+                <div class="cv-entry-sub">Volunteer · Cambridge, MA</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2021 – Present</div>
+                <div class="cv-entry-title">Mother of Mercy Free Medical Clinic</div>
+                <div class="cv-entry-sub">Senior Volunteer &amp; Medical Scribe · Manassas, VA</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="cv-entries">
+              <div>
+                <div class="cv-entry-year">2015 – Present</div>
+                <div class="cv-entry-title">Hope for Tomorrow Free Dental Clinic</div>
+                <div class="cv-entry-sub">Lead Volunteer · Washington, DC</div>
+              </div>
+              <div>
+                <div class="cv-entry-year">2021 – 2025</div>
+                <div class="cv-entry-title">Catholic Hoos Homeless Ministry</div>
+                <div class="cv-entry-sub">Volunteer · Charlottesville, VA</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <!-- Skills & Toolkit -->
+      <div class="about-coursework reveal">
+        <div class="cv-section-title">Skills &amp; Toolkit</div>
+        <div class="skill-grid">
+
+          <div>
+            <div class="skill-category-label">Computational</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">R</span>
+              <span class="skill-chip">MATLAB</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">Databricks</span>
+              <span class="skill-chip">C++</span>
+              <span class="skill-chip">UNIX</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="skill-category-label">Laboratory</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Cell culture</span>
+              <span class="skill-chip">IF microscopy</span>
+              <span class="skill-chip">EV isolation</span>
+              <span class="skill-chip">PCR</span>
+              <span class="skill-chip">Western blots</span>
+              <span class="skill-chip">BCA assays</span>
+              <span class="skill-chip">Focused ultrasound</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="skill-category-label">Photography</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Portraits</span>
+              <span class="skill-chip">Events</span>
+              <span class="skill-chip">Professional headshots</span>
+              <span class="skill-chip">Adobe Lightroom</span>
+              <span class="skill-chip">Capture One</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Selected Coursework -->
+      <div class="about-coursework reveal">
+        <div class="cv-section-title">Selected Coursework</div>
+        <div class="course-grid">
+
+          <div class="course-item grad">
+            <span class="course-name">Systems Immunology &amp; Immunoengineering <span class="grad-label">Graduate-Level Course</span></span>
+            <span class="course-code">BME 6550</span>
+          </div>
+
+          <div class="course-item grad">
+            <span class="course-name">BME Data Science <span class="grad-label">Graduate-Level Course</span></span>
+            <span class="course-code">BME 6550</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Nanomedicine</span>
+            <span class="course-code">BME 4890</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Data Science Systems</span>
+            <span class="course-code">DS 2002</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Bioreaction Kinetics</span>
+            <span class="course-code">BME 4390</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Microbial Biomedical Engineering</span>
+            <span class="course-code">BME 4380</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Foundations of Machine Learning</span>
+            <span class="course-code">DS 3001</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Biomedical Systems Analysis &amp; Design</span>
+            <span class="course-code">BME 3310</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Applied Statistics &amp; Probability</span>
+            <span class="course-code">APMA 3110</span>
+          </div>
+
+          <div class="course-item">
+            <span class="course-name">Biotransport</span>
+            <span class="course-code">BME 3240</span>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-  </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- ============================================================
        RESEARCH
@@ -1785,12 +2039,11 @@
                 <span class="pub-type pub-type-journal">Published</span>
                 <span class="pub-venue">JCO Oncology Practice</span>
               </div>
-              <p class="pub-title" style="margin-bottom:0.25rem;">When Is the Right Time? A Qualitative Study of Timing of Specialty Palliative Care in Patients With Brain Tumors</p>
+              <p class="pub-title" style="margin-bottom:0.25rem;">When Is the Right Time? A Qualitative Study of Timing of Specialty Palliative Care in Patients With Brain Tumors <a class="pub-link" href="https://ascopubs.org/doi/abs/10.1200/OP-25-01360" target="_blank" rel="noopener">Read ↗</a></p>
               <p class="pub-detail">
                 Rhee JY, Miller P, Tentor Z, <strong>Vinh J</strong>, Tulsky JA, Reich A, Wright AA, Lindvall C
               </p>
             </div>
-            <a class="pub-link" href="https://ascopubs.org/doi/abs/10.1200/OP-25-01360" target="_blank" rel="noopener">Read</a>
           </div>
 
           <div class="pub-entry">
@@ -2195,289 +2448,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ============================================================
-       ABOUT / CV SNAPSHOT
-       ============================================================ -->
-  <section class="section" id="about">
-    <div class="container">
-      <!-- Photo + Bio -->
-      <div class="about-grid">
-
-        <div class="about-photo-wrap reveal">
-          <img src="photography_website_albums_20260519/About/2024_HOCH_JV-6%20copy.jpg" alt="Justin Vinh" class="about-photo" />
-          <span class="about-photo-label">Justin Vinh</span>
-        </div>
-
-        <div>
-          <p class="section-label reveal">About</p>
-          <h2 class="section-title reveal">Who I Am</h2>
-          <div class="about-bio reveal">
-            <p>
-              I'm an <strong>immuno-oncology researcher</strong> at Dana-Farber Cancer Institute,
-              working in the Lindvall &amp; Rhee Labs under Drs. Charlotta Lindvall and John Rhee.
-              I graduated from the <strong>University of Virginia</strong> in 2025 with a B.S. in
-              Biomedical Engineering (Highest Distinction) and a Minor in Data Science, with a focus
-              on immunoengineering — and a 3.90 GPA.
-            </p>
-            <p>
-              My research sits at the intersection of <strong>translational medicine and artificial
-              intelligence</strong>. At Dana-Farber, I leverage LLMs for clinical free text analysis
-              and serious illness care. My prior work at UVA and the National Cancer Institute spanned
-              focused ultrasound immunotherapy, single-cell multiplex imaging, and machine learning
-              approaches to characterizing the tumor microenvironment.
-            </p>
-            <p>
-              Outside research, I'm a <strong>freelance photographer</strong> of over a decade,
-              co-founder of Project Ray, and a committed humanitarian volunteering at free medical
-              clinics and homeless ministries. I play guitar, chase clear skies for astrophotography,
-              and remain endlessly fascinated by the cells that hunt cells.
-            </p>
-            <div style="margin-top:1.25rem; display:flex; gap:1rem; flex-wrap:wrap;">
-              <a href="Resume v5.2 - Justin Vinh (2026.04.15).docx" class="btn btn-primary" target="_blank" rel="noopener">Download Resume</a>
-              <a href="https://www.linkedin.com/in/justin-n-vinh" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Resume listing -->
-      <div class="about-resume reveal-stagger">
-
-        <div>
-          <div class="cv-section-title">Education</div>
-          <div class="cv-entries">
-            <div>
-              <div class="cv-entry-year">2021 – 2025</div>
-              <div class="cv-entry-title">B.S. Biomedical Engineering, Highest Distinction</div>
-              <div class="cv-entry-sub">University of Virginia · Minor in Data Science · 3.90 GPA</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2018 – 2021</div>
-              <div class="cv-entry-title">Honors Program (Dual-Enrolled)</div>
-              <div class="cv-entry-sub">Northern Virginia Community College · 4.00 GPA</div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="cv-section-title">Experience</div>
-          <div class="cv-entries">
-            <div>
-              <div class="cv-entry-year">2025 – Present</div>
-              <div class="cv-entry-title">Research Assistant</div>
-              <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs · Boston, MA</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2019 – Present</div>
-              <div class="cv-entry-title">Freelance Photographer</div>
-              <div class="cv-entry-sub">Justin Vinh Photography · justinvinh.com</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">Spring 2025</div>
-              <div class="cv-entry-title">Course Instructor — BME 1501: Finding &amp; Figuring Cancer</div>
-              <div class="cv-entry-sub">University of Virginia · School of Engineering</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">Summer 2023</div>
-              <div class="cv-entry-title">Undergraduate Research Fellow</div>
-              <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program · Bethesda, MD</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2021 – 2025</div>
-              <div class="cv-entry-title">Research Assistant</div>
-              <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering · Charlottesville, VA</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2022 – 2025</div>
-              <div class="cv-entry-title">Co-Founder &amp; Director</div>
-              <div class="cv-entry-sub">Project Ray · Boston, MA</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2023 – 2024</div>
-              <div class="cv-entry-title">Emergency Medicine Scribe</div>
-              <div class="cv-entry-sub">UVA Health · Emergency Department · Charlottesville, VA</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2022 – 2025</div>
-              <div class="cv-entry-title">Founder</div>
-              <div class="cv-entry-sub">C4 Initiative — Compassionate Connections · University of Virginia</div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="cv-section-title">Awards &amp; Honors</div>
-          <div class="cv-entries">
-            <div>
-              <div class="cv-entry-year">2025</div>
-              <div class="cv-entry-title">UVA Engineering Outstanding Student of the Year</div>
-              <div class="cv-entry-sub">University of Virginia</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2024</div>
-              <div class="cv-entry-title">Harrison Undergraduate Research Award</div>
-              <div class="cv-entry-sub">University of Virginia</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2024</div>
-              <div class="cv-entry-title">Raven Fellowship</div>
-              <div class="cv-entry-sub">University of Virginia · Raven Society</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2024</div>
-              <div class="cv-entry-title">Astronaut Scholarship</div>
-              <div class="cv-entry-sub">Astronaut Scholarship Foundation</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2024</div>
-              <div class="cv-entry-title">Churchill Scholarship Nomination</div>
-              <div class="cv-entry-sub">University of Virginia</div>
-            </div>
-            <div>
-              <div class="cv-entry-year">2023</div>
-              <div class="cv-entry-title">Barry Goldwater Scholarship Nomination</div>
-              <div class="cv-entry-sub">University of Virginia</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Service & Volunteering -->
-      <div class="about-coursework reveal">
-        <div class="cv-section-title">Service &amp; Volunteering</div>
-        <div class="about-resume" style="grid-template-columns: repeat(2, 1fr);">
-
-          <div>
-            <div class="cv-entries">
-              <div>
-                <div class="cv-entry-year">2026 – Present</div>
-                <div class="cv-entry-title">Harvard Square Homeless Shelter</div>
-                <div class="cv-entry-sub">Volunteer · Cambridge, MA</div>
-              </div>
-              <div>
-                <div class="cv-entry-year">2021 – Present</div>
-                <div class="cv-entry-title">Mother of Mercy Free Medical Clinic</div>
-                <div class="cv-entry-sub">Senior Volunteer &amp; Medical Scribe · Manassas, VA</div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="cv-entries">
-              <div>
-                <div class="cv-entry-year">2015 – Present</div>
-                <div class="cv-entry-title">Hope for Tomorrow Free Dental Clinic</div>
-                <div class="cv-entry-sub">Lead Volunteer · Washington, DC</div>
-              </div>
-              <div>
-                <div class="cv-entry-year">2021 – 2025</div>
-                <div class="cv-entry-title">Catholic Hoos Homeless Ministry</div>
-                <div class="cv-entry-sub">Volunteer · Charlottesville, VA</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Skills & Toolkit -->
-      <div class="about-coursework reveal">
-        <div class="cv-section-title">Skills &amp; Toolkit</div>
-        <div class="skill-grid">
-
-          <div>
-            <div class="skill-category-label">Computational</div>
-            <div class="skill-chips">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">R</span>
-              <span class="skill-chip">MATLAB</span>
-              <span class="skill-chip">SQL</span>
-              <span class="skill-chip">Databricks</span>
-              <span class="skill-chip">C++</span>
-              <span class="skill-chip">UNIX</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="skill-category-label">Laboratory</div>
-            <div class="skill-chips">
-              <span class="skill-chip">Cell culture</span>
-              <span class="skill-chip">IF microscopy</span>
-              <span class="skill-chip">EV isolation</span>
-              <span class="skill-chip">PCR</span>
-              <span class="skill-chip">Western blots</span>
-              <span class="skill-chip">BCA assays</span>
-              <span class="skill-chip">Focused ultrasound</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Selected Coursework -->
-      <div class="about-coursework reveal">
-        <div class="cv-section-title">Selected Coursework</div>
-        <div class="course-grid">
-
-          <div class="course-item grad">
-            <span class="course-name">Systems Immunology &amp; Immunoengineering <span class="grad-label">Graduate-Level Course</span></span>
-            <span class="course-code">BME 6550</span>
-          </div>
-
-          <div class="course-item grad">
-            <span class="course-name">BME Data Science <span class="grad-label">Graduate-Level Course</span></span>
-            <span class="course-code">BME 6550</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Nanomedicine</span>
-            <span class="course-code">BME 4890</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Data Science Systems</span>
-            <span class="course-code">DS 2002</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Bioreaction Kinetics</span>
-            <span class="course-code">BME 4390</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Microbial Biomedical Engineering</span>
-            <span class="course-code">BME 4380</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Foundations of Machine Learning</span>
-            <span class="course-code">DS 3001</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Biomedical Systems Analysis &amp; Design</span>
-            <span class="course-code">BME 3310</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Applied Statistics &amp; Probability</span>
-            <span class="course-code">APMA 3110</span>
-          </div>
-
-          <div class="course-item">
-            <span class="course-name">Biotransport</span>
-            <span class="course-code">BME 3240</span>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <div class="divider"></div>
 
@@ -2829,7 +2799,7 @@
           item.classList.remove('hidden');
         }
       });
-      showMoreWrap.style.display = filter === 'all' && !showingAll ? 'flex' : 'none';
+      showMoreWrap.style.display = filter === 'all' ? 'flex' : 'none';
     }
 
     document.querySelectorAll('.photo-filter-btn').forEach(btn => {
@@ -2841,7 +2811,8 @@
     });
 
     showMoreBtn.addEventListener('click', () => {
-      showingAll = true;
+      showingAll = !showingAll;
+      showMoreBtn.textContent = showingAll ? 'Show less ↑' : 'Show more ↓';
       applyFilter('all');
     });
 
