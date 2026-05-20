@@ -363,6 +363,7 @@
       transition: background 0.2s, color 0.2s, border-color 0.2s;
       cursor: pointer;
       border: 1px solid transparent;
+      background: transparent;
     }
 
     .btn-primary {
@@ -441,12 +442,50 @@
       text-transform: uppercase;
     }
 
-    .research-card-tag {
-      background: var(--surface-2);
-      padding: 0.2rem 0.5rem;
-      border-radius: var(--radius);
-      color: var(--accent-dim);
+    .research-card-meta > span:last-child { white-space: nowrap; }
+
+    .research-card-inst {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
+
+    .research-card-provenance {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding-left: 0.65rem;
+      border-left: 2px solid rgba(200,240,74,0.2);
+    }
+
+    .research-card-lab {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      color: var(--text-mid);
+    }
+
+    .research-card-pi {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      font-style: italic;
+    }
+
+    .research-card-poster {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.2rem 0.6rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .research-card-poster:hover { color: var(--text-mid); border-color: #444; }
 
     .research-card h3 {
       font-family: var(--font-display);
@@ -1122,6 +1161,14 @@
       line-height: 1.3;
     }
 
+    .cv-entry-pi {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      letter-spacing: 0.03em;
+      margin-top: 0.15rem;
+    }
+
     /* ============================================================
        CONTACT
        ============================================================ */
@@ -1752,12 +1799,14 @@
 
         <article class="research-card">
           <div class="research-card-meta">
+            <span class="research-card-inst">Dana-Farber Cancer Institute</span>
             <span>2025 – Present</span>
-            <span class="research-card-tag">Lindvall &amp; Rhee Labs</span>
           </div>
-          <h3>
-            Large Language Models for Clinical Free Text Extraction &amp; Serious Illness Care
-          </h3>
+          <h3>Large Language Models for Clinical Free Text Extraction &amp; Serious Illness Care</h3>
+          <div class="research-card-provenance">
+            <div class="research-card-lab">Lindvall &amp; Rhee Labs</div>
+            <div class="research-card-pi">PI: John Rhee, MD, MPH &amp; Charlotta Lindvall, MD, PhD</div>
+          </div>
           <p>
             At Dana-Farber's Lindvall &amp; Rhee Labs, I leverage fine-tuned LLMs to conduct GWAS
             studies on treatment side-effect data extracted from clinical notes. I also execute key
@@ -1775,12 +1824,14 @@
 
         <article class="research-card">
           <div class="research-card-meta">
+            <span class="research-card-inst">University of Virginia</span>
             <span>2022 – 2023</span>
-            <span class="research-card-tag">UVA Sheybani Lab</span>
           </div>
-          <h3>
-            Focused Ultrasound &amp; Dendritic Cell Immunotherapy
-          </h3>
+          <h3>Focused Ultrasound &amp; Dendritic Cell Immunotherapy</h3>
+          <div class="research-card-provenance">
+            <div class="research-card-lab">Sheybani Lab</div>
+            <div class="research-card-pi">PI: Natasha Sheybani, PhD</div>
+          </div>
           <p>
             Investigated how focused ultrasound (FUS) modulates dendritic cell activity to enhance
             oncolytic immunotherapies. Characterized extracellular vesicles released by dendritic
@@ -1792,17 +1843,20 @@
             <span class="tag-chip">Dendritic Cells</span>
             <span class="tag-chip">Immunotherapy</span>
             <span class="tag-chip">EVs</span>
+            <a class="research-card-poster" href="posters/UVA%20Summer%202022%20Undergad%20Research%20Poster%20-%20Justin%20Vinh%20-%20uzm7zh.pdf" target="_blank" rel="noopener">Poster ↗</a>
           </div>
         </article>
 
         <article class="research-card">
           <div class="research-card-meta">
+            <span class="research-card-inst">University of Virginia</span>
             <span>2023 – 2025</span>
-            <span class="research-card-tag">UVA Sheybani Lab</span>
           </div>
-          <h3>
-            5-ALA Sonodynamic Therapy in Glioblastoma
-          </h3>
+          <h3>5-ALA Sonodynamic Therapy in Glioblastoma</h3>
+          <div class="research-card-provenance">
+            <div class="research-card-lab">Sheybani Lab</div>
+            <div class="research-card-pi">PI: Natasha Sheybani, PhD</div>
+          </div>
           <p>
             Characterized the effects of 5-aminolevulinic acid (5-ALA) sonodynamic therapy on
             cancerous glioma stem cells and their secreted extracellular vesicles, with the goal
@@ -1814,17 +1868,20 @@
             <span class="tag-chip">Glioblastoma</span>
             <span class="tag-chip">5-ALA</span>
             <span class="tag-chip">EVs</span>
+            <a class="research-card-poster" href="posters/Capstone%20Poster%20-%20JV_RE.pdf" target="_blank" rel="noopener">Poster ↗</a>
           </div>
         </article>
 
         <article class="research-card">
           <div class="research-card-meta">
+            <span class="research-card-inst">National Cancer Institute</span>
             <span>2023</span>
-            <span class="research-card-tag">National Cancer Institute</span>
           </div>
-          <h3>
-            Multiplex Immunofluorescence &amp; Machine Learning for Tumor Microenvironment Analysis
-          </h3>
+          <h3>Multiplex Immunofluorescence &amp; Machine Learning for Tumor Microenvironment Analysis</h3>
+          <div class="research-card-provenance">
+            <div class="research-card-lab">Center for Biomedical Informatics &amp; Information Technology</div>
+            <div class="research-card-pi">PI: Noemi Kedei, MD; Scott Lawrence, MS; Janelle Cortner, PhD</div>
+          </div>
           <p>
             As a 2023 NIH Summer Intern at the NCI Center for Biomedical Informatics, I developed and
             optimized a NIDAP cloud workflow to analyze single-cell immunofluorescent imagery. Created
@@ -1837,6 +1894,7 @@
             <span class="tag-chip">Immunofluorescence</span>
             <span class="tag-chip">Machine Learning</span>
             <span class="tag-chip">NIDAP</span>
+            <a class="research-card-poster" href="posters/Summer%202023%20NIH%20SIP%20Poster%20-%20Justin%20Vinh.pdf" target="_blank" rel="noopener">Poster ↗</a>
           </div>
         </article>
 
@@ -2176,6 +2234,7 @@
               <option>Portrait</option>
               <option>Professional headshot</option>
               <option>Event</option>
+              <option>Graduation</option>
               <option>Other</option>
             </select>
           </div>
@@ -2357,7 +2416,8 @@
             <div>
               <div class="cv-entry-year">2025 – Present</div>
               <div class="cv-entry-title">Research Assistant</div>
-              <div class="cv-entry-sub">Dana-Farber Cancer Institute · Lindvall &amp; Rhee Labs · Boston, MA</div>
+              <div class="cv-entry-sub">Lindvall &amp; Rhee Labs · Dana-Farber Cancer Institute · Boston, MA</div>
+              <div class="cv-entry-pi">PI: John Rhee, MD, MPH; Charlotta Lindvall, MD, PhD</div>
             </div>
             <div>
               <div class="cv-entry-year">2019 – Present</div>
@@ -2372,7 +2432,8 @@
             <div>
               <div class="cv-entry-year">Summer 2023</div>
               <div class="cv-entry-title">Undergraduate Research Fellow</div>
-              <div class="cv-entry-sub">National Cancer Institute · NIH Summer Internship Program · Bethesda, MD</div>
+              <div class="cv-entry-sub">CBIIT · National Cancer Institute · Bethesda, MD</div>
+              <div class="cv-entry-pi">PI: Noemi Kedei, MD; Scott Lawrence, MS; Janelle Cortner, PhD</div>
             </div>
             <div>
               <div class="cv-entry-year">2023 – 2024</div>
@@ -2392,7 +2453,8 @@
             <div>
               <div class="cv-entry-year">2021 – 2025</div>
               <div class="cv-entry-title">Research Assistant</div>
-              <div class="cv-entry-sub">UVA Sheybani Lab · Dept. of Biomedical Engineering · Charlottesville, VA</div>
+              <div class="cv-entry-sub">Sheybani Lab · UVA Dept. of Biomedical Engineering · Charlottesville, VA</div>
+              <div class="cv-entry-pi">PI: Natasha Sheybani, PhD</div>
             </div>
           </div>
         </div>
@@ -2488,6 +2550,7 @@
               <span class="skill-chip">Databricks</span>
               <span class="skill-chip">C++</span>
               <span class="skill-chip">UNIX</span>
+              <span class="skill-chip">High performance computing</span>
             </div>
           </div>
 
@@ -2510,8 +2573,8 @@
               <span class="skill-chip">Portraits</span>
               <span class="skill-chip">Events</span>
               <span class="skill-chip">Professional headshots</span>
+              <span class="skill-chip">Graduation</span>
               <span class="skill-chip">Adobe Lightroom</span>
-              <span class="skill-chip">Capture One</span>
             </div>
           </div>
 
