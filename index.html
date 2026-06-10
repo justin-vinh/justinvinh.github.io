@@ -294,7 +294,7 @@
       .hero-ctas.visible { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
       .nav-toggle { display: flex; }
       .nav-links {
         /* now a viewport sibling — fixed works freely */
@@ -371,7 +371,7 @@
       opacity: 0.15;
     }
 
-    .hero-content { position: relative; z-index: 1; will-change: opacity, transform; }
+    .hero-content { position: relative; z-index: 1; will-change: transform; }
 
     .hero-eyebrow {
       font-family: var(--font-mono);
@@ -447,12 +447,19 @@
     }
 
     .hero-ctas {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, max-content);
       gap: 1rem;
-      flex-wrap: wrap;
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.6s 0.6s ease forwards;
+    }
+
+    @media (max-width: 900px) {
+      .hero-ctas {
+        grid-template-columns: repeat(2, max-content);
+      }
+      .hero-ctas .btn { justify-content: center; }
     }
 
     .btn {
@@ -1805,9 +1812,8 @@
 
       <p class="hero-bio">
         I study the intersection of immunology, oncology, and artificial intelligence — from focused
-        ultrasound immunotherapy to large language models in clinical care. I graduated with highest distinction from UVA in 2025
-        with a B.S. in Biomedical Engineering and a minor in Data Science, and I'm
-        currently a researcher at the Dana-Farber Cancer Institute.
+        ultrasound immunotherapy to large language models in clinical care. Outside the lab, I am a
+        prolific photographer with over 10 years of experience and a nonprofit director.
       </p>
 
       <div class="hero-ctas">
@@ -2850,19 +2856,19 @@
         typeEl.textContent = word.slice(0, ++typeCharIdx);
         if (typeCharIdx === word.length) {
           typeDeleting = true;
-          setTimeout(typeTick, 1600);
+          setTimeout(typeTick, 1000);
           return;
         }
-        setTimeout(typeTick, 65);
+        setTimeout(typeTick, 42);
       } else {
         typeEl.textContent = word.slice(0, --typeCharIdx);
         if (typeCharIdx === 0) {
           typeDeleting = false;
           typeWordIdx = (typeWordIdx + 1) % typeWords.length;
-          setTimeout(typeTick, 350);
+          setTimeout(typeTick, 220);
           return;
         }
-        setTimeout(typeTick, 40);
+        setTimeout(typeTick, 25);
       }
     }
 
@@ -2983,14 +2989,27 @@
     lightboxClose.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    /* ── Scroll-driven hero fade ── */
+    /* ── Parallax hero ── */
     const heroContent = document.querySelector('.hero-content');
+    const heroGridBg  = document.querySelector('.hero-grid-bg');
     const heroSection = document.getElementById('hero');
 
+    let heroTicking = false;
     window.addEventListener('scroll', () => {
-      const t = Math.min(Math.max(document.documentElement.scrollTop / (heroSection.offsetHeight * 0.45), 0), 1);
-      heroContent.style.opacity = 1 - t;
-      heroContent.style.transform = t > 0 ? `translateY(${-t * 28}px) scale(${1 - t * 0.03})` : '';
+      if (heroTicking) return;
+      heroTicking = true;
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        const heroH = heroSection.offsetHeight;
+        if (sy < heroH) {
+          heroContent.style.transform = sy ? `translateY(${sy * 0.38}px)` : '';
+          heroGridBg.style.transform  = sy ? `translateY(${sy * 0.15}px)` : '';
+        } else {
+          heroContent.style.transform = '';
+          heroGridBg.style.transform  = '';
+        }
+        heroTicking = false;
+      });
     }, { passive: true });
 
     /* ── Nav logo glitch on load ── */
